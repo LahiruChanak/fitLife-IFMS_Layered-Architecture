@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="scannerPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.QrScannerController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="255.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanner">
+         <font>
+            <Font name="Segoe UI Semibold" size="24.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="254.0" layoutY="339.0" onAction="#btnCloseOnAction" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Close" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Text fill="#a9a9a9" layoutX="183.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep your QR inside the frame">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

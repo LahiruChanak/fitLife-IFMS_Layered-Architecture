@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="homeNode" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.DashboardFormController">
+    <children>
+      <Pane layoutX="24.0" layoutY="14.0" prefHeight="81.0" prefWidth="1000.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+         <children>
+            <Label layoutX="30.0" layoutY="9.0" text="Welcome Back" textFill="#747d8c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUser" layoutX="77.0" layoutY="42.0" stylesheets="@../asserts/css/Font.css" text="User">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Text fx:id="txtTime" layoutX="745.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10:30 AM" textAlignment="RIGHT" wrappingWidth="230.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtDate" layoutX="745.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="January 01, 2024" textAlignment="RIGHT" wrappingWidth="230.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="80.0" layoutY="120.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="25.0" layoutY="55.0" text="Trainer" textFill="#747d8c">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTrainerCount" layoutX="110.0" layoutY="25.0" text="0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/trainer_C.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+        <Pane layoutX="330.0" layoutY="120.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="25.0" layoutY="55.0" text="Member" textFill="#747d8c">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMemberCount" layoutX="110.0" layoutY="25.0" text="0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/member_C.png" />
+               </image>
+            </ImageView>
+         </children>
+        </Pane>
+      <Pane layoutX="580.0" layoutY="120.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="15.0" layoutY="55.0" text="Total Fee" textFill="#747d8c">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalFee" layoutX="80.0" layoutY="25.0" text="000000.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/Fee_C.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+        <Pane layoutX="31.0" layoutY="240.0" prefHeight="461.0" prefWidth="1010.0" style="-fx-background-color: #bdc3c7; -fx-background-radius: 10;">
+            <children>
+            <Label layoutX="680.0" layoutY="10.0" prefHeight="30.0" text="Store Product Sales">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <PieChart fx:id="pieChartSales" focusTraversable="true" labelLineLength="5.0" layoutX="496.0" layoutY="2.0" legendVisible="false" prefHeight="470.0" prefWidth="551.0" />
+                <Label layoutX="165.0" layoutY="10.0" prefHeight="30.0" text="Monthly Membership Fee">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <BarChart fx:id="barMembershipFee" barGap="5.0" focusTraversable="true" layoutX="4.0" layoutY="39.0" legendSide="TOP" legendVisible="false" prefHeight="387.0" prefWidth="484.0">
+                    <xAxis>
+                        <CategoryAxis prefHeight="14.0" prefWidth="268.0" side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis prefHeight="153.0" prefWidth="28.0" side="LEFT" />
+                    </yAxis>
+                </BarChart>
+            <Line endX="355.184814453125" endY="256.8757629394531" layoutX="349.0" layoutY="-27.0" rotate="90.0" startX="-56.39996337890625" startY="256.87579345703125" stroke="#5b5b5b" />
+            </children>
+        </Pane>
+      <Pane layoutX="830.0" layoutY="120.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="15.0" layoutY="55.0" text="Total Purchase" textFill="#747d8c">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalPurchase" layoutX="80.0" layoutY="25.0" text="000000.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/totalPurchase.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="purchaseHistoryPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.PurchaseHistoryFormController">
+   <children>
+      <Label layoutX="60.0" layoutY="20.0" text="Purchase History">
+         <font>
+            <Font name="Segoe UI Semibold" size="30.0" />
+         </font>
+      </Label>
+      <Pane layoutX="26.0" layoutY="90.0" prefHeight="547.0" prefWidth="1039.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="tblPurchaseHistory" layoutX="15.0" layoutY="17.0" prefHeight="515.0" prefWidth="1012.0" stylesheets="@../asserts/css/TableStyle.css">
+               <columns>
+                  <TableColumn fx:id="colPurchaseId" prefWidth="106.0" text="Purchase Id" />
+                  <TableColumn fx:id="colProductId" prefWidth="97.0" text="Product Id" />
+                  <TableColumn fx:id="colProductName" prefWidth="136.00001525878906" text="Product" />
+                  <TableColumn fx:id="colUnitPrice" prefWidth="72.0" text="Price" />
+                  <TableColumn fx:id="colMemberId" prefWidth="104.800048828125" text="Member Id" />
+                  <TableColumn fx:id="colMemberName" prefWidth="137.60003662109375" text="Member Name" />
+                  <TableColumn fx:id="colDate" prefWidth="97.60009765625" text="Date" />
+                  <TableColumn fx:id="colTime" prefWidth="91.9998779296875" text="Time" />
+                  <TableColumn fx:id="colQty" prefWidth="57.5999755859375" text="Qty" />
+                  <TableColumn fx:id="colTotal" prefWidth="104.79998779296875" text="Total" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <JFXButton buttonType="RAISED" layoutX="168.0" layoutY="655.0" onAction="#btnBackOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton graphicTextGap="0.0" layoutX="599.0" layoutY="655.0" onAction="#btnReceiptOnAction" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Receipt" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/receip.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

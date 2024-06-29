@@ -1,0 +1,18 @@
+.default-color0.chart-pie {
+    -fx-pie-color: #747d8c;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #7bed9f;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #eccc68;
+}
+
+.default-color0.chart-pie-label {
+    -fx-font-size: 15px;
+    -fx-font-family: Arial;
+    -fx-text-alignment: center;
+    -fx-rotate: 90;
+}

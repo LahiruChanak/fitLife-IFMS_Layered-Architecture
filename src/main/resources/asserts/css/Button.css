@@ -1,0 +1,11 @@
+.jfx-active-button {
+    -fx-text-fill: white;
+    -fx-underline: true;
+    -fx-border-color: white;
+    -fx-border-radius: 20;
+}
+
+.jfx-button {
+    -fx-text-alignment: right;
+    -fx-alignment: right;
+}

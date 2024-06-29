@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="registerPane" prefHeight="540.0" prefWidth="480.0" style="-fx-background-color: transparent; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.RegisterPaneController">
+   <children>
+      <Label layoutX="140.0" layoutY="25.0" text="Create Account" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="28.0" />
+         </font>
+      </Label>
+      <Line endX="189.79998779296875" endY="-3.814697265625E-5" layoutX="167.0" layoutY="65.0" startX="-51.5999755859375" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="2.0" />
+      <JFXTextField fx:id="txtUsername" labelFloat="true" layoutX="80.0" layoutY="101.0" onAction="#txtUsernameOnAction" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Username" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="80.0" layoutY="171.0" onAction="#txtNameOnAction" onKeyReleased="#txtNameOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Name" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="80.0" layoutY="311.0" onAction="#txtPasswordOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXPasswordField fx:id="txtConfirmPW" labelFloat="true" layoutX="80.0" layoutY="381.0" onAction="#txtConfirmPWOnAction" onKeyReleased="#setTxtConfirmPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Confirm Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton fx:id="btnSignUp" buttonType="RAISED" layoutX="90.0" layoutY="450.0" onAction="#btnSignUpOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #3ae374; -fx-background-radius: 20;" text="Sign Up" textFill="#030000">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="250.0" layoutY="450.0" onAction="#btnCancelOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #121110; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="165.0" layoutY="511.0" text="Terms of Use | Privacy Policy" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="80.0" layoutY="241.0" onAction="#txtEmailOnAction" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="40.0" prefWidth="177.0" promptText="Email" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtOTP" labelFloat="true" layoutX="278.0" layoutY="241.0" onAction="#txtOTPOnAction" onKeyReleased="#txtOTPOnKeyReleased" prefHeight="40.0" prefWidth="118.0" promptText="OTP" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="349.0" layoutY="238.0" onAction="#btnSendOnAction" prefHeight="43.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-background-radius: 15;" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" rotate="-30.0">
+               <image>
+                  <Image url="@../asserts/icon/send.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</Pane>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="cartPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.CartFormController">
+   <children>
+      <JFXButton layoutX="37.0" layoutY="658.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="535.0" layoutX="40.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="261.0">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <JFXComboBox fx:id="cmbMemberId" labelFloat="true" layoutX="79.0" layoutY="204.8" onAction="#cmbMemberIdOnAction" prefHeight="38.0" prefWidth="165.0" promptText="Member Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="205.0" />
+      <JFXButton layoutX="156.0" layoutY="657.0" onAction="#btnAddToCartOnAction" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Add to Cart" textFill="WHITE">
+
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/cart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="600.0" layoutX="332.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="727.0">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <TableView fx:id="tblCart" fixedCellSize="0.0" layoutX="354.8" layoutY="120.0" prefHeight="400.0" prefWidth="685.0" stylesheets="@../asserts/css/TableStyle.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="354.8" AnchorPane.rightAnchor="40.399999999999864" AnchorPane.topAnchor="120.0">
+         <columns>
+            <TableColumn fx:id="colProductId" prefWidth="107.20000910758972" style="-fx-alignment: center;" text="Id" />
+            <TableColumn fx:id="colPrdName" prefWidth="204.80003356933594" style="-fx-alignment: center;" text="Product" />
+            <TableColumn fx:id="colQty" prefWidth="112.79998779296875" style="-fx-alignment: center;" text="Qty" />
+            <TableColumn fx:id="colTotal" prefWidth="161.5999755859375" style="-fx-alignment: center;" text="Total" />
+            <TableColumn fx:id="colRemove" prefWidth="94.39991455078132" style="-fx-alignment: center;" text="Remove" />
+         </columns>
+      </TableView>
+      <Text fill="#636e72" layoutX="544.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Net Total:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="642.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtNetTotal" layoutX="684.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="520.0" layoutY="633.0" onAction="#btnPlaceOrderOnAction" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/placeOrder.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton graphicTextGap="0.0" layoutX="727.0" layoutY="635.0" onAction="#btnPurchaseHistoryOnAction" prefHeight="43.0" prefWidth="180.0" style="-fx-background-color: #121110; -fx-background-radius: 10;" text="Purchase History" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/receip.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="50.0" layoutX="614.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="363.0">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <Text fill="#636e72" layoutX="643.0" layoutY="58.38203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" AnchorPane.topAnchor="36.8">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtOrderDate" layoutX="704.0" layoutY="58.38203125" strokeType="OUTSIDE" strokeWidth="0.0" text="-" AnchorPane.topAnchor="36.8">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="70.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cart" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbProductId" labelFloat="true" layoutX="79.0" layoutY="276.6" onAction="#cmbProductIdSearchOnAction" prefHeight="36.0" prefWidth="166.0" promptText="Product Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="276.6" />
+      <JFXTextField fx:id="txtPurchaseId" labelFloat="true" layoutX="79.0" layoutY="136.0" prefHeight="36.0" prefWidth="165.0" promptText="Purchase Id" style="-fx-background-color: #f1f2f6;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPrdName" labelFloat="true" layoutX="79.0" layoutY="348.0" prefHeight="36.0" prefWidth="165.0" promptText="Product Name" style="-fx-background-color: #f1f2f6;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="79.0" layoutY="421.0" prefHeight="36.0" prefWidth="165.0" promptText="Unit Price" style="-fx-background-color: #f1f2f6;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="80.0" layoutY="494.0" prefHeight="36.0" prefWidth="165.0" promptText="Qty On Hand" style="-fx-background-color: #f1f2f6;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="80.0" layoutY="565.0" onAction="#txtQtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Qty" style="-fx-background-color: #f1f2f6;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+   </children>
+</AnchorPane>

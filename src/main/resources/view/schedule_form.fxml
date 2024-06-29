@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.ScheduleFormController">
+    <children>
+        <Pane layoutX="70.0" layoutY="90.0" prefHeight="82.0" prefWidth="935.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+            <children>
+                <Label layoutX="26.0" layoutY="120.0" />
+            <JFXTextField fx:id="txtScheduleId" labelFloat="true" layoutX="60.0" layoutY="31.0" onAction="#txtScheduleIdSearchOnAction" onKeyReleased="#txtScheduleIdOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Schedule Id">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtName" labelFloat="true" layoutX="375.0" layoutY="32.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Name">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="714.0" layoutY="32.0" onKeyReleased="#txtDescriptionOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Description">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Pane>
+        <Pane layoutX="45.0" layoutY="248.0" prefHeight="440.0" prefWidth="1010.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="30.0">
+            <effect>
+                <DropShadow />
+            </effect>
+            <children>
+                <TableView fx:id="tblSchedule" layoutX="21.0" layoutY="21.0" prefHeight="403.0" prefWidth="964.0" stylesheets="@../asserts/css/TableStyle.css">
+                    <columns>
+                        <TableColumn fx:id="colScheduleId" prefWidth="172.00000381469727" text="Schedule Id" />
+                        <TableColumn fx:id="colName" prefWidth="307.1999969482422" text="Name" />
+                        <TableColumn fx:id="colDescription" prefWidth="486.40008544921875" text="Description" />
+                    </columns>
+                </TableView>
+            </children></Pane>
+      <Label layoutX="50.0" layoutY="20.0" text="Schedule" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" focusTraversable="false" graphicTextGap="0.0" layoutX="219.0" layoutY="191.0" onAction="#btnScheduleDetailsOnAction" prefHeight="52.0" prefWidth="205.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Schedule Details" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Segoe UI Semibold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/scheduleDetails.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Pane layoutX="580.0" layoutY="194.0" prefHeight="50.0" prefWidth="363.0" style="-fx-background-color: #121110; -fx-background-radius: 10 10 10 10;">
+         <children>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="19.0" layoutY="-3.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="53.0" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="85.0" layoutY="2.0" onAction="#btnClearOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/icon/clear.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="151.0" layoutY="2.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/icon/update.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="219.0" layoutY="2.0" onAction="#btnDeleteOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/icon/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="287.0" layoutY="4.0" onAction="#btnSearchOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/icon/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+    </children>
+</AnchorPane>
