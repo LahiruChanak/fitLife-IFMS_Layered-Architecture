@@ -51,11 +51,6 @@ public class AttendanceDAOImpl implements AttendanceDAO {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FROM attendance WHERE id = ?", id);
-    }
-
-    @Override
     public List<Attendance> getAll() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("SELECT * FROM attendance");
@@ -94,5 +89,8 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
     public double getTotal() throws SQLException { return 0; }
+
+    @Override
+    public boolean delete(String id) throws SQLException { return false; }
 
 }

@@ -11,7 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import lk.ijse.fitnesscentre.dao.custom.impl.CredentialDAOImpl;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
 import lk.ijse.fitnesscentre.util.GMailer;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
@@ -26,13 +27,12 @@ public class ForgotPWPaneController {
 
     public JFXButton btnFCancel;
 
-    public JFXTextField txtUsername;
     public JFXTextField txtEmail;
     public JFXTextField txtOTP;
     public JFXPasswordField txtNewPW;
     public JFXPasswordField txtConfirmPW;
 
-    CredentialDAOImpl credentialDAO = new CredentialDAOImpl();
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
     public void btnChangeOnAction(ActionEvent actionEvent) {
         String email = txtEmail.getText();
@@ -48,7 +48,7 @@ public class ForgotPWPaneController {
         }
 
         try {
-            boolean isTrue = credentialDAO.checkForgetPWCredential(email, otp, newPw, confirmPw);
+            boolean isTrue = credentialBO.checkForgetPWCredential(email, otp, newPw, confirmPw);
             if (isTrue) {
                 new Alert(Alert.AlertType.INFORMATION, "Password Changed successfully.").show();
                 clearField();
@@ -78,14 +78,11 @@ public class ForgotPWPaneController {
     }
 
     private void clearField() {
-        txtUsername.clear();
         txtEmail.clear();
         txtOTP.clear();
         txtNewPW.clear();
         txtConfirmPW.clear();
     }
-
-    public void txtUsernameOnAction(ActionEvent actionEvent) { txtEmail.requestFocus(); }
 
     public void txtEmailOnAction(ActionEvent actionEvent) { txtNewPW.requestFocus(); }
 
@@ -94,8 +91,6 @@ public class ForgotPWPaneController {
     public void txtConfirmPWOnAction(ActionEvent actionEvent) throws Exception { btnSendOnAction(actionEvent); }
 
     public void txtOTPOnAction(ActionEvent actionEvent) { btnChangeOnAction(actionEvent); }
-
-    public void txtUsernameOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.USERNAME, txtUsername); }
 
     public void txtEmailOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.EMAIL, txtEmail); }
 
@@ -108,9 +103,6 @@ public class ForgotPWPaneController {
     public String isValid(){
 
         String message = "";
-
-        if (!Regex.setTextColor(TextField.USERNAME,txtUsername))
-            message += "Username must be between 3 and 16 characters long.\n\n";
 
         if (!Regex.setTextColor(TextField.EMAIL,txtEmail))
             message += "Enter valid email address.\n\n";
@@ -126,4 +118,5 @@ public class ForgotPWPaneController {
 
         return message.isEmpty() ? null : message;
     }
+
 }

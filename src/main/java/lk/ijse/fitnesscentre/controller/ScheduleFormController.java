@@ -15,6 +15,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.ScheduleBO;
+import lk.ijse.fitnesscentre.dto.ScheduleDTO;
 import lk.ijse.fitnesscentre.entity.Schedule;
 import lk.ijse.fitnesscentre.view.tdm.ScheduleTm;
 import lk.ijse.fitnesscentre.dao.custom.impl.ScheduleDAOImpl;
@@ -45,9 +48,10 @@ public class ScheduleFormController {
     @FXML
     private TableView<ScheduleTm> tblSchedule;
 
-    private List<Schedule> scheduleList = new ArrayList<>();
+    private List<ScheduleDTO> scheduleList = new ArrayList<>();
 
-    ScheduleDAOImpl scheduleDAO = new ScheduleDAOImpl();
+    ScheduleBO scheduleBO = (ScheduleBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE);
+
 
     //Button Actions
 
@@ -68,7 +72,7 @@ public class ScheduleFormController {
         String scheduleName = txtName.getText();
         String description = txtDescription.getText();
 
-        Schedule schedule =new Schedule(scheduleId,scheduleName, description);
+        ScheduleDTO dto =new ScheduleDTO(scheduleId,scheduleName, description);
 
         String errorMessage = isValid();
 
@@ -78,7 +82,7 @@ public class ScheduleFormController {
         }
 
         try {
-            boolean isAdded = scheduleDAO.add(schedule);
+            boolean isAdded = scheduleBO.addSchedule(dto);
 
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Schedule Added.").show();
@@ -101,7 +105,7 @@ public class ScheduleFormController {
         String scheduleName = txtName.getText();
         String description = txtDescription.getText();
 
-        Schedule schedule =new Schedule(scheduleId,scheduleName, description);
+        ScheduleDTO dto =new ScheduleDTO(scheduleId,scheduleName, description);
 
         String errorMessage = isValid();
 
@@ -111,7 +115,7 @@ public class ScheduleFormController {
         }
 
         try {
-            boolean isUpdated = scheduleDAO.update(schedule);
+            boolean isUpdated = scheduleBO.updateSchedule(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Schedule Updated.").show();
                 clearField();
@@ -128,7 +132,7 @@ public class ScheduleFormController {
         String scheduleId = txtScheduleId.getText();
 
         try {
-            boolean isDeleted = scheduleDAO.delete(scheduleId);
+            boolean isDeleted = scheduleBO.deleteSchedule(scheduleId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Schedule Deleted.").show();
                 clearField();
@@ -155,7 +159,7 @@ public class ScheduleFormController {
         String scheduleId = txtScheduleId.getText();
 
         try {
-            Schedule schedule = scheduleDAO.searchById(scheduleId);
+            Schedule schedule = scheduleBO.searchByScheduleId(scheduleId);
 
             if (schedule != null) {
                 txtScheduleId.setText(schedule.getScheduleId());
@@ -170,7 +174,7 @@ public class ScheduleFormController {
     private void loadScheduleTable() {
         ObservableList<ScheduleTm> tmList = FXCollections.observableArrayList();
 
-        for (Schedule schedule : scheduleList) {
+        for (ScheduleDTO schedule : scheduleList) {
             ScheduleTm scheduleTm = new ScheduleTm(
                     schedule.getScheduleId(),
                     schedule.getScheduleName(),
@@ -190,10 +194,10 @@ public class ScheduleFormController {
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
-    private List<Schedule> getAllSchedules() {
-        List<Schedule> scheduleList = null;
+    private List<ScheduleDTO> getAllSchedules() {
+        List<ScheduleDTO> scheduleList = null;
         try {
-            scheduleList = scheduleDAO.getAll();
+            scheduleList = scheduleBO.getAllSchedules();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -207,7 +211,7 @@ public class ScheduleFormController {
 
     private void loadNextId() {
         try {
-            String currentId = scheduleDAO.currentId();
+            String currentId = scheduleBO.currentScheduleId();
             String nextId = nextPaymentId(currentId);
 
             txtScheduleId.setText(nextId);

@@ -21,7 +21,7 @@ public class TrainerDetailsDAOImpl implements TrainerDetailsDAO {
 //        List<String> typeList = new ArrayList<>();
 //
 //        while (resultSet.next()) {
-//            typeList.add(resultSet.getString("trainerId"));
+//            typeList.addMember(resultSet.getString("trainerId"));
 //        }
 //        return typeList;
 //    }
@@ -33,7 +33,7 @@ public class TrainerDetailsDAOImpl implements TrainerDetailsDAO {
 //        List<String> typeList = new ArrayList<>();
 //
 //        while (resultSet.next()) {
-//            typeList.add(resultSet.getString("scheduleId"));
+//            typeList.addMember(resultSet.getString("scheduleId"));
 //        }
 //        return typeList;
 //    }

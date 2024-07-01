@@ -15,6 +15,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
+import lk.ijse.fitnesscentre.dto.MembershipDTO;
 import lk.ijse.fitnesscentre.entity.Membership;
 import lk.ijse.fitnesscentre.view.tdm.MembershipTm;
 import lk.ijse.fitnesscentre.dao.custom.impl.MembershipDAOImpl;
@@ -52,10 +55,12 @@ public class MembershipFormController {
 
     public JFXButton btnPayment;
 
-    private List<Membership> membershipList = new ArrayList<>();
+    private List<MembershipDTO> membershipList = new ArrayList<>();
 
-    MembershipDAOImpl membershipDAO = new MembershipDAOImpl();
+    MembershipBO membershipBO = (MembershipBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBERSHIP);
 
+
+    //Button Actions
     public void btnPaymentOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/payment_form.fxml"));
         Pane registerPane = fxmlLoader.load();
@@ -79,7 +84,7 @@ public class MembershipFormController {
             return;
         }
 
-        Membership membership = new Membership(membershipId, membershipType, description, membershipFee);
+        MembershipDTO dto = new MembershipDTO(membershipId, membershipType, description, membershipFee);
 
         String errorMessage = isValid();
 
@@ -89,7 +94,7 @@ public class MembershipFormController {
         }
 
         try {
-            boolean isAdded = membershipDAO.add(membership);
+            boolean isAdded = membershipBO.addMembership(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Membership saved!").show();
                 clearField();
@@ -118,7 +123,7 @@ public class MembershipFormController {
             return;
         }
 
-        Membership membership = new Membership(membershipId, membershipType, description, membershipFee);
+        MembershipDTO dto = new MembershipDTO(membershipId, membershipType, description, membershipFee);
 
         String errorMessage = isValid();
 
@@ -128,7 +133,7 @@ public class MembershipFormController {
         }
 
         try {
-            boolean isUpdate = membershipDAO.update(membership);
+            boolean isUpdate = membershipBO.updateMembership(dto);
             if (isUpdate) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Membership updated!").show();
                 clearField();
@@ -144,7 +149,7 @@ public class MembershipFormController {
         String membershipId = txtMembershipId.getText();
 
         try {
-            boolean isDeleted = membershipDAO.delete(membershipId);
+            boolean isDeleted = membershipBO.deleteMembership(membershipId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Membership deleted!").show();
                 clearField();
@@ -176,7 +181,7 @@ public class MembershipFormController {
         String membershipId = txtMembershipId.getText();
 
         try {
-            Membership membership = membershipDAO.searchById(membershipId);
+            Membership membership = membershipBO.searchByMembershipId(membershipId);
 
             if (membership != null) {
                 txtMembershipId.setText(membership.getMembershipId());
@@ -192,7 +197,7 @@ public class MembershipFormController {
     private void loadMembershipTable() {
         ObservableList<MembershipTm> tmList = FXCollections.observableArrayList();
 
-        for (Membership membership : membershipList) {
+        for (MembershipDTO membership : membershipList) {
             MembershipTm membershipTm = new MembershipTm(
                     membership.getMembershipId(),
                     membership.getMembershipType(),
@@ -214,10 +219,11 @@ public class MembershipFormController {
         colMembershipFee.setCellValueFactory(new PropertyValueFactory<>("membershipFee"));
     }
 
-    private List<Membership> getAllMembership() {
-        List<Membership> membershipList = null;
+    private List<MembershipDTO> getAllMembership() {
+        List<MembershipDTO> membershipList = null;
+
         try {
-            membershipList = membershipDAO.getAll();
+            membershipList = membershipBO.getAllMemberships();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -265,7 +271,7 @@ public class MembershipFormController {
 
     private void loadNextId() {
         try {
-            String currentId = membershipDAO.currentId();
+            String currentId = membershipBO.currentMembershipId();
             String nextId = nextMemberId(currentId);
 
             txtMembershipId.setText(nextId);

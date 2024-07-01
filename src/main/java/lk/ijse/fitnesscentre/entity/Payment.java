@@ -18,4 +18,5 @@ public class Payment {
     private Date date;
     private Time time;
     private String membershipId;
+    private String memberId;
 }

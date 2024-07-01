@@ -21,10 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.PlaceOrderDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.ProductDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.PurchaseDAOImpl;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.MemberBO;
+import lk.ijse.fitnesscentre.bo.custom.PlaceOrderBO;
+import lk.ijse.fitnesscentre.bo.custom.ProductBO;
+import lk.ijse.fitnesscentre.bo.custom.PurchaseBO;
 import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.entity.*;
 import lk.ijse.fitnesscentre.view.tdm.CartTm;
@@ -98,10 +99,12 @@ public class CartFormController {
 
     private final ObservableList<CartTm> cartList = FXCollections.observableArrayList();
 
-    MemberDAOImpl memberDAO = new MemberDAOImpl();
-    ProductDAOImpl productDAO = new ProductDAOImpl();
-    PurchaseDAOImpl purchaseDAO = new PurchaseDAOImpl();
-    PlaceOrderDAOImpl placeOrderDAO = new PlaceOrderDAOImpl();
+    //BO Objects
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
+    PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
+    PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
+
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
@@ -210,7 +213,7 @@ public class CartFormController {
     private void getProductId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = productDAO.getIds();
+            List<String> idList = productBO.getProductIds();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -228,7 +231,7 @@ public class CartFormController {
     private void getMemberId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = memberDAO.getIds();
+            List<String> idList = memberBO.getMemberIds();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -242,7 +245,7 @@ public class CartFormController {
 
     private void loadNextPurchaseId() {
         try {
-            String currentId = purchaseDAO.currentId();
+            String currentId = purchaseBO.currentPurchaseId();
             String nextId = nextPurchaseId(currentId);
 
             txtPurchaseId.setText(nextId);
@@ -302,7 +305,7 @@ public class CartFormController {
             Optional<ButtonType> type = confirm.showAndWait();
 
             if (type.isPresent() && type.get() == ButtonType.OK) {
-                boolean isSuccess = placeOrderDAO.placeOrder(po);
+                boolean isSuccess = placeOrderBO.placeOrder(po);
 
                 if (isSuccess) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully Purchased. Do you want a receipt?");
@@ -358,7 +361,7 @@ public class CartFormController {
     public void cmbProductIdSearchOnAction(ActionEvent actionEvent) {
         String prdId = cmbProductId.getValue();
         try {
-            Product product = productDAO.searchById(prdId);
+            Product product = productBO.searchByProductId(prdId);
             if (product != null) {
                 txtPrdName.setText(product.getProductName());
                 txtUnitPrice.setText(String.valueOf(product.getUnitPrice()));

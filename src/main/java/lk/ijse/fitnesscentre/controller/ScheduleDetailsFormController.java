@@ -13,13 +13,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.ScheduleDAOImpl;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.MemberBO;
+import lk.ijse.fitnesscentre.bo.custom.ScheduleBO;
+import lk.ijse.fitnesscentre.bo.custom.ScheduleDetailsBO;
+import lk.ijse.fitnesscentre.dto.ScheduleDetailsDTO;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.entity.Schedule;
 import lk.ijse.fitnesscentre.entity.ScheduleDetails;
 import lk.ijse.fitnesscentre.view.tdm.ScheduleDetailsTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.ScheduleDetailsDAOImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,10 +36,6 @@ public class ScheduleDetailsFormController {
     public JFXTextField txtScheduleName;
     public JFXTextField txtMemberName;
 
-    ScheduleDetailsDAOImpl scheduleDetailsDAO = new ScheduleDetailsDAOImpl();
-    MemberDAOImpl memberDAO = new MemberDAOImpl();
-    ScheduleDAOImpl scheduleDAO = new ScheduleDAOImpl();
-
     @FXML
     private TableView<ScheduleDetailsTm> tblScheduleDetails;
 
@@ -46,7 +44,13 @@ public class ScheduleDetailsFormController {
     public TableColumn colScheduleName;
     public TableColumn colMemberName;
 
-    private List<ScheduleDetails> scheduleDetailsList = new ArrayList<>();
+    private List<ScheduleDetailsDTO> scheduleDetailsList = new ArrayList<>();
+
+    //Objects
+    ScheduleDetailsBO scheduleDetailsBO = (ScheduleDetailsBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE_DETAILS);
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    ScheduleBO scheduleBO = (ScheduleBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE);
+
 
     public void initialize() {
         this.scheduleDetailsList = getAllScheduleDetails();
@@ -73,10 +77,10 @@ public class ScheduleDetailsFormController {
             return;
         }
 
-        ScheduleDetails scheduleDetails = new ScheduleDetails(scheduleId, scheduleName, memberId, memberName);
+        ScheduleDetailsDTO dto = new ScheduleDetailsDTO(scheduleId, scheduleName, memberId, memberName);
 
         try {
-            boolean isAdded = scheduleDetailsDAO.add(scheduleDetails);
+            boolean isAdded = scheduleDetailsBO.addScheduleDetails(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Schedule Details Saved.").show();
                 clearField();
@@ -100,10 +104,10 @@ public class ScheduleDetailsFormController {
             return;
         }
 
-        ScheduleDetails scheduleDetails = new ScheduleDetails(scheduleId, scheduleName, memberId, memberName);
+        ScheduleDetailsDTO dto = new ScheduleDetailsDTO(scheduleId, scheduleName, memberId, memberName);
 
         try {
-            boolean isUpdated = scheduleDetailsDAO.update(scheduleDetails);
+            boolean isUpdated = scheduleDetailsBO.updateScheduleDetails(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Schedule Details Updated.").show();
                 clearField();
@@ -126,7 +130,7 @@ public class ScheduleDetailsFormController {
         }
 
         try {
-            boolean isDeleted = scheduleDetailsDAO.delete(scheduleId,memberId);
+            boolean isDeleted = scheduleDetailsBO.deleteScheduleDetails(scheduleId,memberId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Schedule Details Deleted.").show();
                 clearField();
@@ -140,7 +144,7 @@ public class ScheduleDetailsFormController {
     public void cmbMemberIdSearchOnAction() {
         String memberId = cmbMemberId.getValue();
         try {
-            Member member = memberDAO.searchById(memberId);
+            Member member = memberBO.searchByMemberId(memberId);
             if (member != null) {
                 txtMemberName.setText(member.getMemberName());
                 txtMemberName.setEditable(false);
@@ -153,7 +157,7 @@ public class ScheduleDetailsFormController {
     public void cmbScheduleIdSearchOnAction() {
         String scheduleId = cmbScheduleId.getValue();
         try {
-            Schedule schedule = scheduleDAO.searchById(scheduleId);
+            Schedule schedule = scheduleBO.searchByScheduleId(scheduleId);
             if (schedule != null) {
                 txtScheduleName.setText(schedule.getScheduleName());
                 txtScheduleName.setEditable(false);
@@ -177,7 +181,7 @@ public class ScheduleDetailsFormController {
 
     private void loadMemberId() {
         try {
-            List<String> types = memberDAO.getIds();
+            List<String> types = memberBO.getMemberIds();
             cmbMemberId.getItems().addAll(types);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -186,7 +190,7 @@ public class ScheduleDetailsFormController {
 
     private void loadScheduleId() {
         try {
-            List<String> types = scheduleDAO.getIds();
+            List<String> types = scheduleBO.getScheduleIds();
             cmbScheduleId.getItems().addAll(types);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -196,7 +200,7 @@ public class ScheduleDetailsFormController {
     private void loadScheduleDetailsTable() {
         ObservableList<ScheduleDetailsTm> tmList = FXCollections.observableArrayList();
 
-        for (ScheduleDetails scheduleDetails : scheduleDetailsList) {
+        for (ScheduleDetailsDTO scheduleDetails : scheduleDetailsList) {
             ScheduleDetailsTm scheduleDetailsTm = new ScheduleDetailsTm(
                     scheduleDetails.getScheduleId(),
                     scheduleDetails.getScheduleName(),
@@ -226,10 +230,10 @@ public class ScheduleDetailsFormController {
         colMemberName.setCellValueFactory(new PropertyValueFactory<>("memberName"));
     }
 
-    private List<ScheduleDetails> getAllScheduleDetails() {
-        List<ScheduleDetails> scheduleDetails = null;
+    private List<ScheduleDetailsDTO> getAllScheduleDetails() {
+        List<ScheduleDetailsDTO> scheduleDetails = null;
         try {
-            scheduleDetails = scheduleDetailsDAO.getAll();
+            scheduleDetails = scheduleDetailsBO.getAllScheduleDetails();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

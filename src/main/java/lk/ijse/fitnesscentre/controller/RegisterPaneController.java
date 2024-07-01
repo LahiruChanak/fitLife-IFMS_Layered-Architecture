@@ -11,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
 import lk.ijse.fitnesscentre.dao.custom.impl.CredentialDAOImpl;
 import lk.ijse.fitnesscentre.util.GMailer;
 import lk.ijse.fitnesscentre.util.Regex;
@@ -31,7 +33,7 @@ public class RegisterPaneController {
     public JFXPasswordField txtPassword;
     public JFXPasswordField txtConfirmPW;
 
-    CredentialDAOImpl credentialDAO = new CredentialDAOImpl();
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
     public void btnSignUpOnAction(ActionEvent actionEvent) throws IOException {
 
@@ -50,7 +52,7 @@ public class RegisterPaneController {
         }
 
         try {
-            boolean isTrue = credentialDAO.checkRegisterCredential(username, name, email, otp, password, confirmPW);
+            boolean isTrue = credentialBO.checkRegisterCredential(username, name, email, otp, password, confirmPW);
             if (isTrue) {
                 new Alert(Alert.AlertType.INFORMATION, "Registration Succussfully.").show();
                 clearField();

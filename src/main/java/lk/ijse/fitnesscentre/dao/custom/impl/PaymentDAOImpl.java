@@ -15,7 +15,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean add(Payment entity) throws SQLException {
-        return SQLUtil.execute("INSERT INTO payment VALUES(?,?,?,?,?,?)", entity.getPaymentId(), entity.getPaymentMethod(), entity.getMembershipFee(), entity.getDate(), entity.getTime(), entity.getMembershipId());
+        return SQLUtil.execute("INSERT INTO payment VALUES(?,?,?,?,?,?,?)", entity.getPaymentId(), entity.getPaymentMethod(), entity.getMembershipFee(), entity.getDate(), entity.getTime(), entity.getMembershipId(), entity.getMemberId());
     }
 
     @Override
@@ -32,8 +32,9 @@ public class PaymentDAOImpl implements PaymentDAO {
             Date date = Date.valueOf(resultSet.getString(4));
             Time time = Time.valueOf(resultSet.getString(5));
             String membershipId = resultSet.getString(6);
+            String memberId = resultSet.getString(7);
 
-            payment = new Payment(payment_id, paymentMethod, membershipFee, date, time, membershipId);
+            payment = new Payment(payment_id, paymentMethod, membershipFee, date, time, membershipId, memberId);
         }
         return payment;
     }
@@ -51,8 +52,9 @@ public class PaymentDAOImpl implements PaymentDAO {
             Date date = Date.valueOf(resultSet.getString(4));
             Time time = Time.valueOf(resultSet.getString(5));
             String membershipId = resultSet.getString(6);
+            String memberId = resultSet.getString(7);
 
-            Payment payment = new Payment(paymentId, paymentMethod, membershipFee, date, time, membershipId);
+            Payment payment = new Payment(paymentId, paymentMethod, membershipFee, date, time, membershipId, memberId);
             paymentList.add(payment);
         }
         return paymentList;

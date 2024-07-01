@@ -18,6 +18,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.ProductBO;
+import lk.ijse.fitnesscentre.dto.ProductDTO;
 import lk.ijse.fitnesscentre.entity.Product;
 import lk.ijse.fitnesscentre.view.tdm.ProductTm;
 import lk.ijse.fitnesscentre.dao.custom.impl.ProductDAOImpl;
@@ -78,9 +81,10 @@ public class StoreFormController {
     @FXML
     private TableView<ProductTm> tblProduct;
 
-    private List<Product> productList = new ArrayList<>();
+    private List<ProductDTO> productList = new ArrayList<>();
 
-    ProductDAOImpl productDAO = new ProductDAOImpl();
+    ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
+
 
     public void initialize() {
         loadNextId();
@@ -104,7 +108,7 @@ public class StoreFormController {
     private void loadProductTable() {
         ObservableList<ProductTm> tmList = FXCollections.observableArrayList();
 
-        for (Product product : productList) {
+        for (ProductDTO product : productList) {
             JFXButton btnAddToCart = new JFXButton("Cart");
             btnAddToCart.setStyle("-fx-background-radius: 15; -fx-background-color: #121110; -fx-text-fill: white;");
 
@@ -134,10 +138,10 @@ public class StoreFormController {
         colAddedTime.setCellValueFactory(new PropertyValueFactory<>("addedTime"));
     }
 
-    private List<Product> getAllProducts() {
-        List<Product> productList = null;
+    private List<ProductDTO> getAllProducts() {
+        List<ProductDTO> productList = null;
         try {
-            productList = productDAO.getAll();
+            productList = productBO.getAllProducts();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -167,7 +171,7 @@ public class StoreFormController {
             return;
         }
 
-        Product product = new Product(productId, productName, unitPrice, qtyOnHand, addedDate, addedTime);
+        ProductDTO dto = new ProductDTO(productId, productName, unitPrice, qtyOnHand, addedDate, addedTime);
 
         String errorMessage = isValid();
 
@@ -177,7 +181,7 @@ public class StoreFormController {
         }
 
         try {
-            boolean isAdded = productDAO.add(product);
+            boolean isAdded = productBO.addProduct(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Product saved!").show();
                 clearField();
@@ -215,10 +219,10 @@ public class StoreFormController {
             return;
         }
 
-        Product product = new Product(productId,productName,unitPrice,qtyOnHand,addedDate,addedTime);
+        ProductDTO dto = new ProductDTO(productId, productName, unitPrice, qtyOnHand, addedDate, addedTime);
 
         try {
-            boolean isUpdated = productDAO.update(product);
+            boolean isUpdated = productBO.updateProduct(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Product Updated.").show();
                 clearField();
@@ -235,7 +239,7 @@ public class StoreFormController {
         String productId = txtProductId.getText();
 
         try {
-            boolean isDeleted = productDAO.delete(productId);
+            boolean isDeleted = productBO.deleteProduct(productId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Product Deleted.").show();
                 clearField();
@@ -261,7 +265,7 @@ public class StoreFormController {
 
     private void loadNextId() {
         try {
-            String currentId = productDAO.currentId();
+            String currentId = productBO.currentProductId();
             String nextId = nextPaymentId(currentId);
 
             txtProductId.setText(nextId);
@@ -284,7 +288,7 @@ public class StoreFormController {
         String productId = txtProductId.getText();
 
         try {
-            Product product = productDAO.searchById(productId);
+            Product product = productBO.searchByProductId(productId);
 
             if (product != null) {
                 txtProductId.setText(product.getProductId());

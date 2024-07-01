@@ -1,6 +1,7 @@
 package lk.ijse.fitnesscentre.dao.custom.impl;
 
 import lk.ijse.fitnesscentre.dao.custom.MemberDAO;
+import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.util.SQLUtil;
 
@@ -108,16 +109,6 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return idList;
     }
-
-//    public String getEndDate(String membershipId) throws SQLException {
-//
-//        ResultSet rst = SQLUtil.execute("SELECT membershipType FROM membership WHERE membershipId = ?", membershipId);
-//
-//        if(rst.next()) {
-//            return rst.getString("membershipType");
-//        }
-//        return null;
-//    }
 
     @Override
     public int getCount() throws SQLException {

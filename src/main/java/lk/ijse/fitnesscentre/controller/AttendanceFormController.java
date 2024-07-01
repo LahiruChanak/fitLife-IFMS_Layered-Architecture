@@ -20,11 +20,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.AttendanceBO;
+import lk.ijse.fitnesscentre.bo.custom.MemberBO;
+import lk.ijse.fitnesscentre.dto.AttendanceDTO;
 import lk.ijse.fitnesscentre.entity.Attendance;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.view.tdm.AttendanceTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.AttendanceDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
@@ -75,10 +77,11 @@ public class AttendanceFormController {
     @FXML
     private JFXTextField txtMemberId;
 
-    private List<Attendance> attendanceList = new ArrayList<>();
+    private List<AttendanceDTO> attendanceList = new ArrayList<>();
 
-    AttendanceDAOImpl attendanceDAO = new AttendanceDAOImpl();
-    MemberDAOImpl memberDAO = new MemberDAOImpl();
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+
 
     public void initialize() {
         this.attendanceList = getAllAttendance();
@@ -95,7 +98,7 @@ public class AttendanceFormController {
         LocalTime time = LocalTime.now();
         String memberId = txtMemberId.getText();
 
-        Attendance attendance =new Attendance(attendanceId,memberName,date,time,memberId);
+        AttendanceDTO dto =new AttendanceDTO(attendanceId,memberName,date,time,memberId);
 
         String errorMessage = isValid();
 
@@ -105,7 +108,7 @@ public class AttendanceFormController {
         }
 
         try {
-            boolean isAdded = attendanceDAO.add(attendance);
+            boolean isAdded = attendanceBO.addAttendance(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Attendance saved!").show();
                 clearField();
@@ -167,7 +170,7 @@ public class AttendanceFormController {
     public void txtAttIdSearchOnAction(ActionEvent actionEvent) {
         String attendanceId = txtAttendanceId.getText();
         try {
-            Attendance attendance = attendanceDAO.searchById(attendanceId);
+            Attendance attendance = attendanceBO.searchByAttendanceId(attendanceId);
             if (attendance != null) {
                 txtMemberId.setText(attendance.getMemberId());
                 txtName.setText(attendance.getMemberName());
@@ -182,7 +185,7 @@ public class AttendanceFormController {
         String memberId = txtMemberId.getText();
 
         try {
-            Member member = memberDAO.searchById(memberId);
+            Member member = memberBO.searchByMemberId(memberId);
             if (member != null) {
                 txtName.setText(member.getMemberName());
             }
@@ -205,7 +208,7 @@ public class AttendanceFormController {
 
     private void loadNextAttendId() {
         try {
-            String currentId = attendanceDAO.currentId();
+            String currentId = attendanceBO.currentAttendanceId();
             String nextId = nextAttendId(currentId);
 
             txtAttendanceId.setText(nextId);
@@ -249,10 +252,11 @@ public class AttendanceFormController {
         colMemberId.setCellValueFactory(new PropertyValueFactory<>("memberId"));
     }
 
-    private List<Attendance> getAllAttendance() {
-        List<Attendance> attendanceList = null;
+    private List<AttendanceDTO> getAllAttendance() {
+        List<AttendanceDTO> attendanceList = null;
+
         try {
-            attendanceList = attendanceDAO.getAll();
+            attendanceList = attendanceBO.getAllAttendances();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -262,7 +266,7 @@ public class AttendanceFormController {
     private void loadAttendanceTable() {
         ObservableList<AttendanceTm> tmList = FXCollections.observableArrayList();
 
-        for (Attendance attendance : attendanceList) {
+        for (AttendanceDTO attendance : attendanceList) {
             AttendanceTm attendanceTm = new AttendanceTm(
                     attendance.getAttendanceId(),
                     attendance.getMemberName(),
@@ -288,7 +292,7 @@ public class AttendanceFormController {
         Platform.runLater(() -> {
 
             try{
-                Member member = memberDAO.searchById(memberId);
+                Member member = memberBO.searchByMemberId(memberId);
                 if (member==null){
                     new Alert(Alert.AlertType.WARNING, "Invalid Member ID").show();
                 } else {

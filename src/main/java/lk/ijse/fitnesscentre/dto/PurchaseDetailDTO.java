@@ -11,7 +11,7 @@ import java.sql.Time;
 @NoArgsConstructor
 @Data
 
-public class PurchaseDetail {
+public class PurchaseDetailDTO {
     private String purchaseId;
     private String productId;
     private Date date;

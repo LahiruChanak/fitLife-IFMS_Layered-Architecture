@@ -13,10 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import lk.ijse.fitnesscentre.dao.custom.impl.MembershipDAOImpl;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.MemberBO;
+import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
+import lk.ijse.fitnesscentre.dto.MemberDTO;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.view.tdm.MemberTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
@@ -25,7 +27,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,10 +93,12 @@ public class MemberFormController {
     @FXML
     private TableView<MemberTm> tblMember;
 
-    private List<Member> memberList = new ArrayList<>();
+    private List<MemberDTO> memberList = new ArrayList<>();
 
-    MemberDAOImpl memberDAO = new MemberDAOImpl();
-    MembershipDAOImpl membershipDAO = new MembershipDAOImpl();
+    //Objects
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    MembershipBO membershipBO = (MembershipBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBERSHIP);
+
 
     @FXML
     void btnAddOnAction(ActionEvent actionEvent) {
@@ -122,7 +125,7 @@ public class MemberFormController {
             return;
         }
 
-        Member member = new Member(memberId, memberName, memberContact, dob, gender, email, membershipId, startDate, endDate);
+        MemberDTO dto = new MemberDTO(memberId, memberName, memberContact, dob, gender, email, membershipId, startDate, endDate);
 
         String errorMessage = isValid();
 
@@ -132,7 +135,7 @@ public class MemberFormController {
         }
 
         try {
-            boolean isAdded = memberDAO.add(member);
+            boolean isAdded = memberBO.addMember(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Member Saved.").show();
                 clearField();
@@ -173,7 +176,7 @@ public class MemberFormController {
             return;
         }
 
-        Member member = new Member(memberId, memberName, memberContact, dob, gender, email, membershipId, startDate, endDate);
+        MemberDTO dto = new MemberDTO(memberId, memberName, memberContact, dob, gender, email, membershipId, startDate, endDate);
 
         String errorMessage = isValid();
 
@@ -183,7 +186,7 @@ public class MemberFormController {
         }
 
         try {
-            boolean isUpdated = memberDAO.update(member);
+            boolean isUpdated = memberBO.updateMember(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Member Updated.").show();
                 clearField();
@@ -201,7 +204,7 @@ public class MemberFormController {
         String memberId = txtMemberId.getText();
 
         try {
-            boolean isDeleted = memberDAO.delete(memberId);
+            boolean isDeleted = memberBO.deleteMember(memberId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Member Deleted.").show();
                 clearField();
@@ -238,7 +241,7 @@ public class MemberFormController {
     }
 
     public void setEndDate() throws SQLException {
-        String type = membershipDAO.getEndDate(cmbMembershipId.getValue());
+        String type = membershipBO.getEndDate(cmbMembershipId.getValue());
         String startDateText = txtStartDate.getText();
 
         LocalDate startDate = LocalDate.parse(startDateText); // Parse LocalDate directly
@@ -263,15 +266,14 @@ public class MemberFormController {
                 break;
         }
 
-        if (endDate == null) {
-            endDate = endDate.with(TemporalAdjusters.lastDayOfMonth()).plusDays(1);
+        if (endDate.getDayOfMonth() != startDate.getDayOfMonth()) {
+            endDate = endDate.withDayOfMonth(1).plusMonths(1);
         }
 
-        if (endDate != null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String formattedEndDate = endDate.format(formatter);
-            txtEndDate.setText(formattedEndDate);
-        }
+        // Format the end date to a string
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedEndDate = endDate.format(formatter);
+        txtEndDate.setText(formattedEndDate);
     }
 
 
@@ -285,7 +287,7 @@ public class MemberFormController {
         String memberId = txtMemberId.getText();
 
         try {
-            Member member = memberDAO.searchById(memberId);
+            Member member = memberBO.searchByMemberId(memberId);
 
             if (member != null) {
                 txtMemberId.setText(member.getMemberId());
@@ -307,7 +309,7 @@ public class MemberFormController {
         String memberContact = txtContact.getText();
 
         try {
-            Member member = memberDAO.searchByContact(memberContact);
+            Member member = memberBO.searchByContact(memberContact);
 
             if (member != null) {
                 txtMemberId.setText(member.getMemberId());
@@ -348,7 +350,7 @@ public class MemberFormController {
     private void loadMembershipIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = membershipDAO.getIds();
+            List<String> idList = membershipBO.getMembershipIds();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -361,7 +363,7 @@ public class MemberFormController {
 
     private void loadNextMemberId() {
         try {
-            String currentId = memberDAO.currentId();
+            String currentId = memberBO.currentMemberId();
             String nextId = nextMemberId(currentId);
 
             txtMemberId.setText(nextId);
@@ -383,7 +385,7 @@ public class MemberFormController {
     private void loadMemberTable() {
         ObservableList<MemberTm> tmList = FXCollections.observableArrayList();
 
-        for (Member member : memberList) {
+        for (MemberDTO member : memberList) {
             MemberTm memberTm = new MemberTm(
                     member.getMemberId(),
                     member.getMemberName(),
@@ -415,10 +417,10 @@ public class MemberFormController {
         colEndDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
     }
 
-    private List<Member> getAllMembers() {
-        List<Member> memberList = null;
+    private List<MemberDTO> getAllMembers() {
+        List<MemberDTO> memberList = null;
         try {
-            memberList = memberDAO.getAll();
+            memberList = memberBO.getAllMember();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

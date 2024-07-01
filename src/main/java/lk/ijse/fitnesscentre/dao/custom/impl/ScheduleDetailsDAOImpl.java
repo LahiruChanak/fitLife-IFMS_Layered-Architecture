@@ -22,7 +22,7 @@ public class ScheduleDetailsDAOImpl implements ScheduleDetailsDAO {
 //        List<String> typeList = new ArrayList<>();
 //
 //        while (resultSet.next()) {
-//            typeList.add(resultSet.getString("scheduleId"));
+//            typeList.addMember(resultSet.getString("scheduleId"));
 //        }
 //        return typeList;
 //    }
@@ -34,7 +34,7 @@ public class ScheduleDetailsDAOImpl implements ScheduleDetailsDAO {
 //        List<String> typeList = new ArrayList<>();
 //
 //        while (resultSet.next()) {
-//            typeList.add(resultSet.getString("memberId"));
+//            typeList.addMember(resultSet.getString("memberId"));
 //        }
 //        return typeList;
 //    }

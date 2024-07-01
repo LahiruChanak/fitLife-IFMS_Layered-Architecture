@@ -12,5 +12,5 @@ import java.util.List;
 
 public class PlaceOrderDTO {
     private PurchaseDTO purchase;
-    private List<PurchaseDetail> pdList;
+    private List<PurchaseDetailDTO> pdList;
 }

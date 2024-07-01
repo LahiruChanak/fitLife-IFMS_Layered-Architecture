@@ -113,9 +113,9 @@ public class MembershipDAOImpl implements MembershipDAO {
 //        while (resultSet.next()) {
 //            String month = resultSet.getString("month");
 //            double monthlyFee = resultSet.getDouble("monthlyFee");
-//            series.getData().add(new XYChart.Data<>(month, monthlyFee));
+//            series.getData().addMember(new XYChart.Data<>(month, monthlyFee));
 //        }
-//        barChart.getData().add(series);
+//        barChart.getData().addMember(series);
 //
 //        for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
 //            n.setStyle("-fx-bar-fill: #ee5253;");

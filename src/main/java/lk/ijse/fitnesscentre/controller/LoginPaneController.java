@@ -16,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
 import lk.ijse.fitnesscentre.dao.custom.impl.CredentialDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
@@ -40,7 +42,7 @@ public class LoginPaneController {
 
     public String username;
 
-    CredentialDAOImpl credentialDAO = new CredentialDAOImpl();
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
     public void initialize() {
         setGreeting();
@@ -61,7 +63,7 @@ public class LoginPaneController {
         }
 
         try {
-            if (credentialDAO.checkLoginCredential(username, password)) {
+            if (credentialBO.checkLoginCredential(username, password)) {
                 navigateToDashboard();
             }
         } catch (SQLException e) {

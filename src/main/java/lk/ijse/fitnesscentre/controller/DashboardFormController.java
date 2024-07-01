@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.*;
 import lk.ijse.fitnesscentre.dao.custom.impl.*;
 
 import java.sql.SQLException;
@@ -37,12 +39,13 @@ public class DashboardFormController {
     private double totalPurchase;
     private String name;
 
-    CredentialDAOImpl credentialDAO = new CredentialDAOImpl();
-    MemberDAOImpl memberDAO = new MemberDAOImpl();
-    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-    PaymentDAOImpl paymentDAO = new PaymentDAOImpl();
-    PurchaseDAOImpl purchaseDAO = new PurchaseDAOImpl();
-    ProductDAOImpl productDAO = new ProductDAOImpl();
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
+    PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
+    ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
+
 
     public void initialize() throws SQLException {
 
@@ -50,13 +53,13 @@ public class DashboardFormController {
         updateDate();
 
         try {
-            trainerCount = trainerDAO.getCount();
-            memberCount = memberDAO.getCount();
-            totalFee = paymentDAO.getTotal();
-            totalPurchase = purchaseDAO.getTotal();
-            name = credentialDAO.getUserName();
-            paymentDAO.monthlyFeeChart(barMembershipFee);
-            productDAO.productSales(pieChartSales);
+            trainerCount = trainerBO.getTrainerCount();
+            memberCount = memberBO.getMemberCount();
+            totalFee = paymentBO.getTotalPayment();
+            totalPurchase = purchaseBO.getTotalPurchase();
+            name = credentialBO.getUserName();
+            paymentBO.monthlyFeeChart(barMembershipFee);
+            productBO.productSales(pieChartSales);
 
         } catch (SQLException e) {
             e.printStackTrace();

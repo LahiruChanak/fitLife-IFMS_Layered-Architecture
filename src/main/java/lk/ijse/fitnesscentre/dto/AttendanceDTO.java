@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import java.sql.Time;
 public class AttendanceDTO {
     private String attendanceId;
     private String memberName;
-    private Date date;
-    private Time time;
+    private LocalDate date;
+    private LocalTime time;
     private String memberId;
 }

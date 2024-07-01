@@ -11,10 +11,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.PurchaseHistoryBO;
 import lk.ijse.fitnesscentre.db.DbConnection;
+import lk.ijse.fitnesscentre.dto.PurchaseHistoryDTO;
 import lk.ijse.fitnesscentre.entity.PurchaseHistory;
 import lk.ijse.fitnesscentre.view.tdm.PurchaseHistoryTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.PurchaseHistoryDAOImpl;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -45,9 +47,9 @@ public class PurchaseHistoryFormController {
     private TableView<PurchaseHistoryTm> tblPurchaseHistory;
 
     @FXML
-    private List<PurchaseHistory> historyList = new ArrayList<>();
+    private List<PurchaseHistoryDTO> historyList = new ArrayList<>();
 
-    PurchaseHistoryDAOImpl purchaseHistoryDAO = new PurchaseHistoryDAOImpl();
+    PurchaseHistoryBO purchaseHistoryBO = (PurchaseHistoryBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE_HISTORY);
 
     public void initialize() {
         this.historyList = getAllHistory();
@@ -109,7 +111,7 @@ public class PurchaseHistoryFormController {
     private void loadPurchaseTable() {
         ObservableList<PurchaseHistoryTm> tmList = FXCollections.observableArrayList();
 
-        for (PurchaseHistory history : historyList) {
+        for (PurchaseHistoryDTO history : historyList) {
             PurchaseHistoryTm historyTm = new PurchaseHistoryTm(
                     history.getPurchaseId(),
                     history.getProductId(),
@@ -130,10 +132,10 @@ public class PurchaseHistoryFormController {
         System.out.println("selectedItem = " + selectedItem);
     }
 
-    private List<PurchaseHistory> getAllHistory() {
-        List<PurchaseHistory> historyList = null;
+    private List<PurchaseHistoryDTO> getAllHistory() {
+        List<PurchaseHistoryDTO> historyList = null;
         try {
-            historyList = purchaseHistoryDAO.getAll();
+            historyList = purchaseHistoryBO.getAllHistory();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

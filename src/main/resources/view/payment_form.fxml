@@ -21,37 +21,43 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Pane layoutX="90.0" layoutY="90.0" prefHeight="171.0" prefWidth="906.0" style="-fx-background-radius: 10; -fx-background-color: white;">
+      <Pane layoutX="50.0" layoutY="90.0" prefHeight="171.0" prefWidth="986.0" style="-fx-background-radius: 10; -fx-background-color: white;">
          <children>
             <Label layoutX="36.0" layoutY="120.0" />
-            <JFXComboBox fx:id="cmbMethod" labelFloat="true" layoutX="385.0" layoutY="120.0" onAction="#cmbMethodOnAction" prefHeight="36.0" prefWidth="165.0" promptText="Method" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
-            <JFXTextField fx:id="txtPaymentId" labelFloat="true" layoutX="50.0" layoutY="40.0" onAction="#txtPaymentIdSearchOnAction" onKeyReleased="#txtPaymentIdOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Payment Id" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="cmbMemberId" labelFloat="true" layoutX="285.0" layoutY="40.0" onAction="#cmbMemberIdOnAction" prefHeight="36.0" prefWidth="165.0" promptText="Member Id" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
+            <JFXComboBox fx:id="cmbMethod" labelFloat="true" layoutX="535.0" layoutY="120.0" onAction="#cmbMethodOnAction" prefHeight="36.0" prefWidth="165.0" promptText="Method" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
+            <JFXTextField fx:id="txtPaymentId" labelFloat="true" layoutX="40.0" layoutY="40.0" onAction="#txtPaymentIdSearchOnAction" onKeyReleased="#txtPaymentIdOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Payment Id" style="-fx-background-color: white;">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="385.0" layoutY="38.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Membership Fee" style="-fx-background-color: white;">
+            <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="535.0" layoutY="40.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Membership Fee" style="-fx-background-color: white;">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtDate" labelFloat="true" layoutX="685.0" layoutY="38.0" prefHeight="36.0" prefWidth="165.0" promptText="Date" style="-fx-background-color: white;">
+            <JFXTextField fx:id="txtDate" labelFloat="true" layoutX="785.0" layoutY="40.0" prefHeight="36.0" prefWidth="165.0" promptText="Date" style="-fx-background-color: white;">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtTime" labelFloat="true" layoutX="685.0" layoutY="120.0" prefHeight="36.0" prefWidth="165.0" promptText="Time" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="cmbMembershipId" labelFloat="true" layoutX="40.0" layoutY="120.0" onAction="#cmbMembershipIdOnAction" prefHeight="36.0" prefWidth="165.0" promptText="Membership Id" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
+            <JFXTextField fx:id="txtName" labelFloat="true" layoutX="285.0" layoutY="120.0" prefHeight="36.0" prefWidth="165.0" promptText="Member Name" style="-fx-background-color: white;">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXComboBox fx:id="cmbMembershipId" labelFloat="true" layoutX="50.0" layoutY="120.0" onAction="#cmbMembershipIdOnAction" prefHeight="36.0" prefWidth="165.0" promptText="Membership Id" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
+            <JFXTextField fx:id="txtTime" labelFloat="true" layoutX="785.0" layoutY="120.0" prefHeight="36.0" prefWidth="165.0" promptText="Time" style="-fx-background-color: white;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
          </children>
          <effect>
             <DropShadow />
          </effect>
       </Pane>
-      <JFXButton fx:id="btnBack" buttonType="RAISED" layoutX="212.0" layoutY="273.0" onAction="#btnBackOnAction" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE" AnchorPane.leftAnchor="212.0">
+      <JFXButton fx:id="btnBack" focusTraversable="false" layoutX="212.0" layoutY="273.0" onAction="#btnBackOnAction" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE" AnchorPane.leftAnchor="212.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -70,12 +76,13 @@
          <children>
             <TableView fx:id="tblPayment" layoutX="24.0" layoutY="17.0" prefHeight="336.0" prefWidth="963.0" stylesheets="@../asserts/css/TableStyle.css">
                <columns>
-                  <TableColumn fx:id="colPaymentId" prefWidth="155.99993896484375" text="Payment Id" />
-                  <TableColumn fx:id="colMethod" minWidth="9.5999755859375" prefWidth="181.59999084472656" text="Method" />
-                  <TableColumn fx:id="colFee" prefWidth="183.20001220703125" text="Membership Fee" />
-                  <TableColumn fx:id="colDate" prefWidth="141.60003662109375" text="Date" />
-                  <TableColumn fx:id="colTime" prefWidth="142.4000244140625" text="Time" />
-                  <TableColumn fx:id="colMembershipId" prefWidth="153.39996337890625" text="Membership Id" />
+                  <TableColumn fx:id="colPaymentId" prefWidth="123.20001220703125" text="Payment Id" />
+                  <TableColumn fx:id="colMethod" minWidth="9.5999755859375" prefWidth="135.19996643066406" text="Method" />
+                  <TableColumn fx:id="colFee" prefWidth="152.7999267578125" text="Membership Fee" />
+                  <TableColumn fx:id="colDate" prefWidth="175.2000732421875" text="Date" />
+                  <TableColumn fx:id="colTime" prefWidth="125.5999755859375" text="Time" />
+                  <TableColumn fx:id="colMembershipId" prefWidth="141.5999755859375" text="Membership Id" />
+                  <TableColumn fx:id="colMemberId" prefWidth="105.39996337890625" text="Member Id" />
                </columns>
             </TableView>
          </children>
@@ -85,7 +92,7 @@
       </Pane>
       <Pane layoutX="650.0" layoutY="272.0" prefHeight="48.0" prefWidth="221.0" style="-fx-background-color: #121110; -fx-background-radius: 10 10 10 10;">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="13.0" layoutY="-2.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="53.0" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="13.0" layoutY="-2.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="53.0" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -97,7 +104,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="84.0" layoutY="2.0" onAction="#btnClearOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+            <JFXButton alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="84.0" layoutY="2.0" onAction="#btnClearOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -109,7 +116,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="155.0" layoutY="3.0" onAction="#btnSearchOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
+            <JFXButton alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="155.0" layoutY="3.0" onAction="#btnSearchOnAction" style="-fx-background-color: #12111000;" text=" " textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

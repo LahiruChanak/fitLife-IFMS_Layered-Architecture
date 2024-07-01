@@ -10,6 +10,7 @@ import java.util.List;
 
 public class PurchaseDAOImpl implements PurchaseDAO {
 
+
     public String currentId() throws SQLException {
 
         ResultSet resultSet = SQLUtil.execute("SELECT purchaseId FROM purchase ORDER BY purchaseId desc LIMIT 1");

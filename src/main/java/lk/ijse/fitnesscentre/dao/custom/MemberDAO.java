@@ -10,4 +10,5 @@ public interface MemberDAO extends CrudDAO<Member> {
 
     Member searchByContact(String contact) throws SQLException;
 
+
 }

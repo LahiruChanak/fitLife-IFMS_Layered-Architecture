@@ -15,9 +15,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.TrainerBO;
+import lk.ijse.fitnesscentre.dto.TrainerDTO;
 import lk.ijse.fitnesscentre.entity.Trainer;
 import lk.ijse.fitnesscentre.view.tdm.TrainerTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.TrainerDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
@@ -53,9 +55,11 @@ public class TrainerFormController {
     @FXML
     private TableView<TrainerTm> tblTrainer;
 
-    private List<Trainer> trainerList = new ArrayList<>();
+    private List<TrainerDTO> trainerList = new ArrayList<>();
 
-    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+    //BO Objects
+    TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
+
 
     //Button Actions
 
@@ -77,7 +81,7 @@ public class TrainerFormController {
         String trainerContact = txtContact.getText();
         String trainerExperience = txtExperience.getText();
 
-        Trainer trainer = new Trainer(trainerId, trainerName, trainerAddress, trainerContact, trainerExperience);
+        TrainerDTO dto = new TrainerDTO(trainerId, trainerName, trainerAddress, trainerContact, trainerExperience);
 
         String errorMessage = isValid();
 
@@ -87,7 +91,7 @@ public class TrainerFormController {
         }
 
         try {
-            boolean isAdded = trainerDAO.add(trainer);
+            boolean isAdded = trainerBO.addTrainer(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Added.").show();
                 clearField();
@@ -107,7 +111,7 @@ public class TrainerFormController {
         String trainerContact = txtContact.getText();
         String trainerExperience = txtExperience.getText();
 
-        Trainer trainer = new Trainer(trainerId, trainerName, trainerAddress, trainerContact, trainerExperience);
+        TrainerDTO dto = new TrainerDTO(trainerId, trainerName, trainerAddress, trainerContact, trainerExperience);
 
         String errorMessage = isValid();
 
@@ -117,7 +121,7 @@ public class TrainerFormController {
         }
 
         try {
-            boolean isUpdated = trainerDAO.update(trainer);
+            boolean isUpdated = trainerBO.updateTrainer(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Updated.").show();
                 refreshTable();
@@ -132,7 +136,7 @@ public class TrainerFormController {
         String trainerId = txtTrainerId.getText();
 
         try {
-            boolean isDeleted = trainerDAO.delete(trainerId);
+            boolean isDeleted = trainerBO.deleteTrainer(trainerId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Deleted.").show();
                 refreshTable();
@@ -159,7 +163,7 @@ public class TrainerFormController {
         String trainerId = txtTrainerId.getText();
 
         try {
-            Trainer trainer = trainerDAO.searchById(trainerId);
+            Trainer trainer = trainerBO.searchByTrainerId(trainerId);
 
             if (trainer != null) {
                 txtTrainerId.setText(trainer.getTrainerId());
@@ -176,7 +180,7 @@ public class TrainerFormController {
     private void loadTrainerTable() {
         ObservableList<TrainerTm> tmList = FXCollections.observableArrayList();
 
-        for (Trainer trainer : trainerList) {
+        for (TrainerDTO trainer : trainerList) {
             TrainerTm trainerTm = new TrainerTm(
                     trainer.getTrainerId(),
                     trainer.getTrainerName(),
@@ -200,10 +204,10 @@ public class TrainerFormController {
         colExperience.setCellValueFactory(new PropertyValueFactory<>("trainerExperience"));
     }
 
-    private List<Trainer> getAllTrainers() {
-        List<Trainer> trainerList = null;
+    private List<TrainerDTO> getAllTrainers() {
+        List<TrainerDTO> trainerList = null;
         try {
-            trainerList = trainerDAO.getAll();
+            trainerList = trainerBO.getAllTrainers();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -217,7 +221,7 @@ public class TrainerFormController {
 
     private void loadNextId() {
         try {
-            String currentId = trainerDAO.currentId();
+            String currentId = trainerBO.currentTrainerId();
             String nextId = nextPaymentId(currentId);
 
             txtTrainerId.setText(nextId);

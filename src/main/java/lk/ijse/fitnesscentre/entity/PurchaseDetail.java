@@ -17,4 +17,10 @@ public class PurchaseDetail {
     private Date date;
     private Time time;
     private int qty;
+
+    public PurchaseDetail(String productId, int qty) {
+        this.productId = productId;
+        this.qty = qty;
+    }
+
 }

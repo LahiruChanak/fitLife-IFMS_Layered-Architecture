@@ -1,6 +1,7 @@
 package lk.ijse.fitnesscentre.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -16,6 +17,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.MemberBO;
+import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
+import lk.ijse.fitnesscentre.bo.custom.PaymentBO;
+import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
+import lk.ijse.fitnesscentre.dto.PaymentDTO;
 import lk.ijse.fitnesscentre.entity.Membership;
 import lk.ijse.fitnesscentre.entity.Payment;
 import lk.ijse.fitnesscentre.view.tdm.PaymentTm;
@@ -47,6 +54,10 @@ public class PaymentFormController {
     public TableColumn colDate;
     public TableColumn colTime;
     public TableColumn colMembershipId;
+    public TableColumn colMemberId;
+
+    @FXML
+    public JFXTextField txtName;
 
     @FXML
     private JFXTextField txtDate;
@@ -69,15 +80,20 @@ public class PaymentFormController {
     @FXML
     private ComboBox<String> cmbMembershipId;
 
-    private List<Payment> paymentList = new ArrayList<>();
+    @FXML
+    private JFXComboBox<String> cmbMemberId;
 
-    PaymentDAOImpl paymentDAO = new PaymentDAOImpl();
-    MembershipDAOImpl membershipDAO = new MembershipDAOImpl();
+    private List<PaymentDTO> paymentList = new ArrayList<>();
+
+    //Objects
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
+    MembershipBO membershipBO = (MembershipBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBERSHIP);
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+
 
     //Button Actions
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/membership_form.fxml"));
         Pane registerPane = fxmlLoader.load();
         paymentPane.getChildren().clear();
@@ -91,6 +107,7 @@ public class PaymentFormController {
         String dateText = txtDate.getText();
         String timeText = txtTime.getText();
         String membershipId = cmbMembershipId.getValue();
+        String memberId = cmbMemberId.getValue();
 
         double membershipFee;
         Date date;
@@ -105,7 +122,7 @@ public class PaymentFormController {
             return;
         }
 
-        Payment payment = new Payment(paymentId, paymentMethod, membershipFee, date, time, membershipId);
+        PaymentDTO dto = new PaymentDTO(paymentId, paymentMethod, membershipFee, date, time, membershipId, memberId);
 
         String errorMessage = isValid();
 
@@ -115,7 +132,7 @@ public class PaymentFormController {
         }
 
         try {
-            boolean isAdded = paymentDAO.add(payment);
+            boolean isAdded = paymentBO.addPayment(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Added.").show();
                 clearField();
@@ -152,62 +169,6 @@ public class PaymentFormController {
         timeline.play();
     }
 
-//    public void btnUpdateOnAction(ActionEvent actionEvent) {
-//        String paymentId = txtPaymentId.getText();
-//        String paymentMethod = cmbMethod.getValue();
-//        String feeText = txtFee.getText();
-//        String dateText = txtDate.getText();
-//        String timeText = txtTime.getText();
-//        String membershipId = txtMembershipId.getText();
-//
-//        double membershipFee;
-//        Date date;
-//        Time time;
-//
-//        try {
-//            membershipFee = Double.parseDouble(feeText);
-//            date = Date.valueOf(dateText);
-//            time = Time.valueOf(timeText);
-//        } catch (NumberFormatException e) {
-//            new Alert(Alert.AlertType.WARNING, "Invalid Fields").show();
-//            return;
-//        }
-//
-//        Payment payment = new Payment(paymentId, paymentMethod, membershipFee, date, time, membershipId);
-//
-//        String errorMessage = isValid();
-//
-//        if (errorMessage != null) {
-//            new Alert(Alert.AlertType.ERROR, errorMessage).show();
-//            return;
-//        }
-//
-//        try {
-//            boolean isUpdate = PaymentRepo.update(payment);
-//            if (isUpdate) {
-//                new Alert(Alert.AlertType.CONFIRMATION, "Payment Updated.").show();
-//                clearField();
-//                refreshTable();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-//        }
-//    }
-//
-//    public void btnDeleteOnAction(ActionEvent actionEvent) {
-//        String paymentId = txtPaymentId.getText();
-//
-//        try {
-//            boolean isDeleted = PaymentRepo.delete(paymentId);
-//            if (isDeleted) {
-//                new Alert(Alert.AlertType.CONFIRMATION, "Payment Deleted.").show();
-//                clearField();
-//                refreshTable();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-//        }
-//    }
 
     //Extra Functions
 
@@ -218,6 +179,7 @@ public class PaymentFormController {
         txtDate.setText("");
         txtTime.setText("");
         cmbMembershipId.setValue(null);
+        cmbMemberId.setValue(null);
     }
 
     public void refreshTable() {
@@ -229,7 +191,7 @@ public class PaymentFormController {
         String paymentId = txtPaymentId.getText();
 
         try {
-            Payment payment = paymentDAO.searchById(paymentId);
+            Payment payment = paymentBO.searchByPaymentId(paymentId);
 
             if (payment != null) {
                 txtPaymentId.setText(payment.getPaymentId());
@@ -238,6 +200,7 @@ public class PaymentFormController {
                 txtDate.setText(String.valueOf(payment.getDate()));
                 txtTime.setText(String.valueOf(payment.getTime()));
                 cmbMembershipId.setValue(payment.getMembershipId());
+                cmbMemberId.setValue(payment.getMemberId());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -247,7 +210,7 @@ public class PaymentFormController {
     public void cmbMembershipIdOnAction() {
         String membershipId = cmbMembershipId.getValue();
         try {
-            Membership membership = membershipDAO.getFee(membershipId);
+            Membership membership = membershipBO.getMembershipFee(membershipId);
             if (membership != null) {
                 txtFee.setText(String.valueOf(membership.getMembershipFee()));
                 txtFee.setEditable(false);
@@ -260,14 +223,15 @@ public class PaymentFormController {
     private void loadPaymentTable() {
         ObservableList<PaymentTm> tmList = FXCollections.observableArrayList();
 
-        for (Payment payment : paymentList) {
+        for (PaymentDTO payment : paymentList) {
             PaymentTm paymentTm = new PaymentTm(
                     payment.getPaymentId(),
                     payment.getPaymentMethod(),
                     payment.getMembershipFee(),
                     payment.getDate(),
                     payment.getTime(),
-                    payment.getMembershipId()
+                    payment.getMembershipId(),
+                    payment.getMemberId()
             );
 
             tmList.add(paymentTm);
@@ -284,12 +248,13 @@ public class PaymentFormController {
         colDate.setCellValueFactory(new PropertyValueFactory<Payment, Date>("date"));
         colTime.setCellValueFactory(new PropertyValueFactory<Payment, Time>("time"));
         colMembershipId.setCellValueFactory(new PropertyValueFactory<>("membershipId"));
+        colMemberId.setCellValueFactory(new PropertyValueFactory<>("memberId"));
     }
 
-    private List<Payment> getAllPayments() {
-        List<Payment> paymentList = null;
+    private List<PaymentDTO> getAllPayments() {
+        List<PaymentDTO> paymentList = null;
         try {
-            paymentList = paymentDAO.getAll();
+            paymentList = paymentBO.getAllPayment();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -311,7 +276,7 @@ public class PaymentFormController {
     private void loadMembershipIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = membershipDAO.getIds();
+            List<String> idList = membershipBO.getMembershipIds();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -322,9 +287,18 @@ public class PaymentFormController {
         }
     }
 
+    private void loadMemberId() {
+        try {
+            List<String> types = memberBO.getMemberIds();
+            cmbMemberId.getItems().addAll(types);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
     private void loadNextId() {
         try {
-            String currentId = paymentDAO.currentId();
+            String currentId = paymentBO.currentPaymentId();
             String nextId = nextPaymentId(currentId);
 
             txtPaymentId.setText(nextId);
@@ -349,6 +323,7 @@ public class PaymentFormController {
         setCellValueFactory();
         loadPaymentTypes();
         loadMembershipIds();
+        loadMemberId();
         loadPaymentTable();
         setAttendDateTime();
     }
@@ -370,4 +345,7 @@ public class PaymentFormController {
         return message.isEmpty() ? null : message;
     }
 
+    public void cmbMemberIdOnAction(ActionEvent actionEvent) {
+
+    }
 }

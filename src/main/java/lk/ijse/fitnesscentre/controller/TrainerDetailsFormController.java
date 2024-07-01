@@ -13,8 +13,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.ScheduleBO;
+import lk.ijse.fitnesscentre.bo.custom.TrainerBO;
+import lk.ijse.fitnesscentre.bo.custom.TrainerDetailsBO;
 import lk.ijse.fitnesscentre.dao.custom.impl.ScheduleDAOImpl;
 import lk.ijse.fitnesscentre.dao.custom.impl.TrainerDAOImpl;
+import lk.ijse.fitnesscentre.dto.TrainerDetailsDTO;
 import lk.ijse.fitnesscentre.entity.Schedule;
 import lk.ijse.fitnesscentre.entity.Trainer;
 import lk.ijse.fitnesscentre.entity.TrainerDetails;
@@ -44,11 +49,12 @@ public class TrainerDetailsFormController {
     private TableView<TrainerDetailsTm> tblTrainerDetails;
 
     @FXML
-    private List<TrainerDetails> trainerDetailsList = new ArrayList<>();
+    private List<TrainerDetailsDTO> trainerDetailsList = new ArrayList<>();
 
-    TrainerDetailsDAOImpl trainerDetailsDAO = new TrainerDetailsDAOImpl();
-    ScheduleDAOImpl scheduleDAO = new ScheduleDAOImpl();
-    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+    //BO Objects
+    TrainerDetailsBO trainerDetailsBO = (TrainerDetailsBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER_DETAILS);
+    ScheduleBO scheduleBO = (ScheduleBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE);
+    TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
 
     public void initialize() {
         this.trainerDetailsList = getAllTrainerDetails();
@@ -73,10 +79,10 @@ public class TrainerDetailsFormController {
             return;
         }
 
-        TrainerDetails trainerDetails = new TrainerDetails(scheduleId, trainerId);
+        TrainerDetailsDTO dto = new TrainerDetailsDTO(scheduleId, trainerId);
 
         try {
-            boolean isAdded = trainerDetailsDAO.add(trainerDetails);
+            boolean isAdded = trainerDetailsBO.addTrainerDetails(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Details Saved.").show();
                 clearField();
@@ -98,10 +104,10 @@ public class TrainerDetailsFormController {
             return;
         }
 
-        TrainerDetails trainerDetails = new TrainerDetails(scheduleId, trainerId);
+        TrainerDetailsDTO dto = new TrainerDetailsDTO(scheduleId, trainerId);
 
         try {
-            boolean isUpdated = trainerDetailsDAO.update(trainerDetails);
+            boolean isUpdated = trainerDetailsBO.updateTrainerDetails(dto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Details Updated.").show();
                 clearField();
@@ -122,7 +128,7 @@ public class TrainerDetailsFormController {
         }
 
         try {
-            boolean isDeleted = trainerDetailsDAO.delete(scheduleId, trainerId);
+            boolean isDeleted = trainerDetailsBO.deleteTrainerDetails(scheduleId, trainerId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Details Deleted.").show();
                 clearField();
@@ -147,7 +153,7 @@ public class TrainerDetailsFormController {
 
     private void loadTrainerId() {
         try {
-            List<String> types = trainerDAO.getIds();
+            List<String> types = trainerBO.getTrainerIds();
             cmbTrainerId.getItems().addAll(types);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -156,7 +162,7 @@ public class TrainerDetailsFormController {
 
     private void loadScheduleId() {
         try {
-            List<String> types = scheduleDAO.getIds();
+            List<String> types = scheduleBO.getScheduleIds();
             cmbScheduleId.getItems().addAll(types);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -166,7 +172,7 @@ public class TrainerDetailsFormController {
     public void cmbScheduleIdSearchOnAction() {
         String scheduleId = cmbScheduleId.getValue();
         try {
-            Schedule schedule = scheduleDAO.searchById(scheduleId);
+            Schedule schedule = scheduleBO.searchByScheduleId(scheduleId);
             if (schedule != null) {
                 txtScheduleName.setText(schedule.getScheduleName());
                 txtScheduleName.setEditable(false);
@@ -179,7 +185,7 @@ public class TrainerDetailsFormController {
     public void cmbTrainerIdSearchOnAction() {
         String trainerId = cmbTrainerId.getValue();
         try {
-            Trainer trainer = trainerDAO.searchById(trainerId);
+            Trainer trainer = trainerBO.searchByTrainerId(trainerId);
             if (trainer != null) {
                 txtTrainerName.setText(trainer.getTrainerName());
                 txtTrainerName.setEditable(false);
@@ -192,7 +198,7 @@ public class TrainerDetailsFormController {
     private void loadTrainerDetailsTable() {
         ObservableList<TrainerDetailsTm> tmList = FXCollections.observableArrayList();
 
-        for (TrainerDetails trainerDetails : trainerDetailsList) {
+        for (TrainerDetailsDTO trainerDetails : trainerDetailsList) {
             TrainerDetailsTm trainerDetailsTm = new TrainerDetailsTm(
                     trainerDetails.getScheduleId(),
                     trainerDetails.getScheduleName(),
@@ -220,10 +226,10 @@ public class TrainerDetailsFormController {
         colTrainerName.setCellValueFactory(new PropertyValueFactory<>("trainerName"));
     }
 
-    private List<TrainerDetails> getAllTrainerDetails() {
-        List<TrainerDetails> trainerDetailsList = null;
+    private List<TrainerDetailsDTO> getAllTrainerDetails() {
+        List<TrainerDetailsDTO> trainerDetailsList = null;
         try {
-            trainerDetailsList = trainerDetailsDAO.getAll();
+            trainerDetailsList = trainerDetailsBO.getAllTrainerDetails();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
