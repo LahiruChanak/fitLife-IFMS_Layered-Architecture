@@ -12,6 +12,6 @@ public interface PurchaseDetailBO extends SuperBO {
 
     boolean add(List<PurchaseDetail> entity) throws SQLException;
 
-    boolean addPurchase(PurchaseDetailDTO dto) throws SQLException;
+    boolean addPurchase(PurchaseDetail dto) throws SQLException;
 
 }

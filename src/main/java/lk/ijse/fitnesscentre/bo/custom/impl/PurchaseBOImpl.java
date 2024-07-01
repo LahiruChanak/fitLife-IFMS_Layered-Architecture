@@ -18,12 +18,13 @@ public class PurchaseBOImpl implements PurchaseBO {
     }
 
     @Override
-    public boolean addPurchase(PurchaseDTO dto) throws SQLException {
-        return purchaseDAO.add(new Purchase(dto.getPurchaseId(),
-                dto.getPurchaseDate(),
-                dto.getPurchaseTime(),
-                dto.getTotalPrice(),
-                dto.getMemberId())
+    public boolean addPurchase(Purchase purchase) throws SQLException {
+        return purchaseDAO.add(new Purchase(
+                purchase.getPurchaseId(),
+                purchase.getPurchaseDate(),
+                purchase.getPurchaseTime(),
+                purchase.getTotalPrice(),
+                purchase.getMemberId())
         );
     }
 

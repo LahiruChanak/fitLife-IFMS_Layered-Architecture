@@ -245,6 +245,12 @@ public class MembershipFormController {
 
     public void setDescription() {
         String type = cmbMembershipType.getValue();
+
+        if (type == null) {
+            txtDescription.setText("");
+            return;
+        }
+
         String description = null;
 
         switch (type) {
@@ -262,6 +268,10 @@ public class MembershipFormController {
 
             case "Annual":
                 description = "Annual membership";
+                break;
+
+            default:
+                description = "";
                 break;
         }
 

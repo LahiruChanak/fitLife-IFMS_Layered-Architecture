@@ -18,8 +18,8 @@ public class PurchaseDetailBOImpl implements PurchaseDetailBO {
     PurchaseDetailDAO purchaseDetailDAO = (PurchaseDetailDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PURCHASE_DETAILS);
 
     @Override
-    public boolean add(List<PurchaseDetail> entity) throws SQLException {
-        for (PurchaseDetail pd : entity) {
+    public boolean add(List<PurchaseDetail> pdList) throws SQLException {
+        for (PurchaseDetail pd : pdList) {
             if(!addPurchase(pd)) {
                 return false;
             }
@@ -28,12 +28,13 @@ public class PurchaseDetailBOImpl implements PurchaseDetailBO {
     }
 
     @Override
-    public boolean addPurchase(PurchaseDetailDTO dto) throws SQLException {
-        return purchaseDetailDAO.add(new PurchaseDetail(dto.getPurchaseId(),
-                dto.getProductId(),
-                dto.getDate(),
-                dto.getTime(),
-                dto.getQty())
+    public boolean addPurchase(PurchaseDetail pd) throws SQLException {
+        return purchaseDetailDAO.add(new PurchaseDetail(
+                pd.getPurchaseId(),
+                pd.getProductId(),
+                pd.getDate(),
+                pd.getTime(),
+                pd.getQty())
         );
     }
 

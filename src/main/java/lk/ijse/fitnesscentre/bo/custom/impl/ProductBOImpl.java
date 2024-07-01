@@ -80,17 +80,11 @@ public class ProductBOImpl implements ProductBO {
 
     @Override
     public boolean updateProductQty(List<PurchaseDetail> pdList) throws SQLException {
-
-        for (PurchaseDetailDTO dto : pdList) {
-            if(!ProductQty(dto)) {
-                return false;
-            }
-        }
-        return true;
+        return productDAO.updateQty(pdList);
     }
 
-    public boolean ProductQty(PurchaseDetailDTO dto) throws SQLException {
-        return productDAO.updateQty(new PurchaseDetail(dto.getProductId(), dto.getQty()));
+    public boolean ProductQty(PurchaseDetail pd) throws SQLException {
+        return productDAO.qtyUpdate(pd);
     }
 
     @Override

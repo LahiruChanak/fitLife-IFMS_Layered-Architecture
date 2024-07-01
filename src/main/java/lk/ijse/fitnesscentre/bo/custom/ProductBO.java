@@ -30,7 +30,7 @@ public interface ProductBO extends SuperBO {
 
     boolean updateProductQty(List<PurchaseDetail> pdList) throws SQLException;
 
-    boolean ProductQty(PurchaseDetailDTO dto) throws SQLException;
+    boolean ProductQty(PurchaseDetail dto) throws SQLException;
 
     void productSales(PieChart pieChart) throws SQLException;
 

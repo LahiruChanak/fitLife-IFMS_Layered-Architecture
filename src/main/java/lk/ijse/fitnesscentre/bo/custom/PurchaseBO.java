@@ -11,7 +11,7 @@ public interface PurchaseBO extends SuperBO {
 
     String currentPurchaseId() throws SQLException;
 
-    boolean addPurchase(PurchaseDTO dto) throws SQLException;
+    boolean addPurchase(Purchase dto) throws SQLException;
 
     double getTotalPurchase() throws SQLException;
 

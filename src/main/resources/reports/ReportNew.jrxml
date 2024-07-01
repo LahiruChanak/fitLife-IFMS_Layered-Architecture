@@ -101,7 +101,7 @@ FROM product p
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<imageExpression><![CDATA["C:/Users/Lenovo/IdeaProjects/fitnessCentre/src/main/resources/asserts/icon/Fitlife.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/Lenovo/IdeaProjects/fitLife-IFMS_Layered-Architecture/src/main/resources/asserts/icon/Fitlife.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

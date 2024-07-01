@@ -22,11 +22,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
-import lk.ijse.fitnesscentre.bo.custom.MemberBO;
-import lk.ijse.fitnesscentre.bo.custom.PlaceOrderBO;
-import lk.ijse.fitnesscentre.bo.custom.ProductBO;
-import lk.ijse.fitnesscentre.bo.custom.PurchaseBO;
+import lk.ijse.fitnesscentre.bo.custom.*;
+import lk.ijse.fitnesscentre.bo.custom.impl.PlaceOrderBOImpl;
 import lk.ijse.fitnesscentre.db.DbConnection;
+import lk.ijse.fitnesscentre.dto.PlaceOrderDTO;
 import lk.ijse.fitnesscentre.entity.*;
 import lk.ijse.fitnesscentre.view.tdm.CartTm;
 import lk.ijse.fitnesscentre.util.Regex;
@@ -100,10 +99,10 @@ public class CartFormController {
     private final ObservableList<CartTm> cartList = FXCollections.observableArrayList();
 
     //BO Objects
-    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
-    ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
-    PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
-    PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
+    private final MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    private final ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
+    private final PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
+    private PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
 
 
     @FXML
@@ -273,6 +272,10 @@ public class CartFormController {
         cartPane.getChildren().add(registerPane);
     }
 
+    public CartFormController() {
+        this.placeOrderBO = new PlaceOrderBOImpl(); // Initialize with the correct implementation
+    }
+
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String purchaseId = txtPurchaseId.getText();
@@ -281,7 +284,7 @@ public class CartFormController {
         double totalPrice = Double.valueOf(txtNetTotal.getText());
         String memberId = cmbMemberId.getValue();
 
-        var purchase = new Purchase(purchaseId, purchaseDate, purchaseTime, totalPrice, memberId);
+//        var purchase = new Purchase(purchaseId, purchaseDate, purchaseTime, totalPrice, memberId);
 
         List<PurchaseDetail> pdList = new ArrayList<>();
 
@@ -298,25 +301,27 @@ public class CartFormController {
             pdList.add(pd);
         }
 
-        PlaceOrder po = new PlaceOrder(purchase, pdList);
+        PlaceOrderDTO dto = new PlaceOrderDTO(purchaseId, purchaseDate, purchaseTime, totalPrice, memberId, pdList);
 
         try {
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Confirm the Purchase?");
             Optional<ButtonType> type = confirm.showAndWait();
 
             if (type.isPresent() && type.get() == ButtonType.OK) {
-                boolean isSuccess = placeOrderBO.placeOrder(po);
+                boolean isSuccess = placeOrderBO.placeOrder(dto);
 
                 if (isSuccess) {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully Purchased. Do you want a receipt?");
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Purchased Successfully. Do you want a receipt?");
                     Optional<ButtonType> result = alert.showAndWait();
 
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         btnReceiptOnAction(event);
                     }
-
                     cartTableClear();
                     loadNextPurchaseId();
+
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Purchased Failed. Please try again.").show();
                 }
             }
         } catch (SQLException e) {

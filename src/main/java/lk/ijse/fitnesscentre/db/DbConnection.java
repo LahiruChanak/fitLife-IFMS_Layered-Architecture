@@ -10,7 +10,7 @@ public class DbConnection {
 
     private DbConnection() throws SQLException {
         connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/fitnesscentre",
+                "jdbc:mysql://localhost:3306/fitLife",
                 "root",
                 "Ijse@123"
         );

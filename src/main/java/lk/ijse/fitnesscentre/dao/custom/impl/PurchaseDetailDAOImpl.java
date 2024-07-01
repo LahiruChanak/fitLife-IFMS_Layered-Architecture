@@ -9,8 +9,8 @@ import java.util.List;
 
 public class PurchaseDetailDAOImpl implements PurchaseDetailDAO {
 
-    public boolean add(List<PurchaseDetail> entity) throws SQLException {
-        for (PurchaseDetail pd : entity) {
+    public boolean add(List<PurchaseDetail> pdList) throws SQLException {
+        for (PurchaseDetail pd : pdList) {
             if(!add(pd)) {
                 return false;
             }
