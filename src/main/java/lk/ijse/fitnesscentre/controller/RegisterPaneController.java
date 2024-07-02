@@ -13,7 +13,6 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
-import lk.ijse.fitnesscentre.dao.custom.impl.CredentialDAOImpl;
 import lk.ijse.fitnesscentre.util.GMailer;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
@@ -76,7 +75,7 @@ public class RegisterPaneController {
 
     public void btnSendOnAction(ActionEvent actionEvent) throws Exception {
         GMailer gMailer = new GMailer();
-        gMailer.OTPSend();
+        gMailer.sendMail(txtEmail.getText());
 
         txtOTP.requestFocus();
     }

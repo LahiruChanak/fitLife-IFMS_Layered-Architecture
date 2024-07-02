@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
+import lk.ijse.fitnesscentre.bo.custom.impl.CredentialBOImpl;
 import lk.ijse.fitnesscentre.dao.custom.impl.CredentialDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
@@ -44,15 +45,14 @@ public class LoginPaneController {
 
     CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
+
     public void initialize() {
         setGreeting();
         txtUsername.requestFocus();
     }
 
-//    public void getUserName() { username = txtUsername.getText(); }
-
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
-        username = txtUsername.getText();
+        String username = txtUsername.getText();
         String password = txtPassword.getText();
 
         String errorMessage = isValid();
@@ -65,6 +65,7 @@ public class LoginPaneController {
         try {
             if (credentialBO.checkLoginCredential(username, password)) {
                 navigateToDashboard();
+                CredentialBOImpl.userName = username;
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details.").show();

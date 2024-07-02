@@ -8,14 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static lk.ijse.fitnesscentre.controller.CredentialFormController.correctOTP;
-import static lk.ijse.fitnesscentre.util.GMailer.generateRandomNumber;
 
 public class CredentialDAOImpl implements CredentialDAO {
 
     @Override
     public boolean checkLoginCredential(String username, String password) throws SQLException {
 
-        ResultSet resultSet = SQLUtil.execute("SELECT password FROM user WHERE username = ?", username, password);
+        ResultSet resultSet = SQLUtil.execute("SELECT password FROM user WHERE userName = ?", username, password);
 
         if (resultSet.next()) {
             String dbPassword = resultSet.getString(1);
@@ -78,17 +77,6 @@ public class CredentialDAOImpl implements CredentialDAO {
     @Override
     public boolean updatePassword(String email, String newPW) throws SQLException {
         return SQLUtil.execute("UPDATE user SET password = ? WHERE email = ?", email, newPW);
-    }
-
-    @Override
-    public String getUserName() throws SQLException {
-
-        ResultSet resultSet = SQLUtil.execute("SELECT name FROM user ORDER BY name DESC LIMIT 1");
-
-        if(resultSet.next()) {
-            return resultSet.getString(1);
-        }
-        return null;
     }
 
 }

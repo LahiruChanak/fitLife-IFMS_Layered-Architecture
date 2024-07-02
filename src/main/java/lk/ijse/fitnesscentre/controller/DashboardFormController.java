@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.*;
+import lk.ijse.fitnesscentre.bo.custom.impl.CredentialBOImpl;
 import lk.ijse.fitnesscentre.dao.custom.impl.*;
 
 import java.sql.SQLException;
@@ -57,7 +58,7 @@ public class DashboardFormController {
             memberCount = memberBO.getMemberCount();
             totalFee = paymentBO.getTotalPayment();
             totalPurchase = purchaseBO.getTotalPurchase();
-            name = credentialBO.getUserName();
+            //name = credentialBO.getUserName();
             paymentBO.monthlyFeeChart(barMembershipFee);
             productBO.productSales(pieChartSales);
 
@@ -68,7 +69,7 @@ public class DashboardFormController {
         setMemberCount(memberCount);
         setTotalFee(totalFee);
         setTotalPurchase(totalPurchase);
-        setUserName(name);
+        setUserName();
     }
 
     private void setTrainerCount(int trainerCount) { lblTrainerCount.setText(String.valueOf(trainerCount)); }
@@ -79,7 +80,9 @@ public class DashboardFormController {
 
     private void setTotalPurchase(double totalPurchase) { lblTotalPurchase.setText(String.valueOf(totalPurchase)); }
 
-    private void setUserName(String name) { lblUser.setText(name); }
+    private void setUserName() {
+        lblUser.setText(CredentialBOImpl.userName);
+    }
 
     private void updateTime() {
         Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {

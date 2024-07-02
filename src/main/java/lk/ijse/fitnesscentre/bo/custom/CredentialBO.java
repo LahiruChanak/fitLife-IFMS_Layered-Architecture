@@ -4,7 +4,6 @@ import lk.ijse.fitnesscentre.bo.SuperBO;
 
 import java.sql.SQLException;
 
-//import static lk.ijse.fitnesscentre.util.GMailer.generateRandomNumber;
 
 public interface CredentialBO extends SuperBO {
 
@@ -16,6 +15,5 @@ public interface CredentialBO extends SuperBO {
 
     boolean updatePassword(String email, String newPW) throws SQLException;
 
-    String getUserName() throws SQLException;
 
 }

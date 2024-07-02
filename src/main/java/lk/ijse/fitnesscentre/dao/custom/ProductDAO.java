@@ -14,6 +14,4 @@ public interface ProductDAO extends CrudDAO<Product> {
 
     boolean qtyUpdate(PurchaseDetail entity) throws SQLException;
 
-    void productSales(PieChart pieChart) throws SQLException;
-
 }

@@ -72,7 +72,7 @@ public class ForgotPWPaneController {
 
     public void btnSendOnAction(ActionEvent actionEvent) throws Exception {
         GMailer gMailer = new GMailer();
-        gMailer.OTPSend();
+        gMailer.sendMail(txtEmail.getText());
 
         txtOTP.requestFocus();
     }

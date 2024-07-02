@@ -2,6 +2,7 @@ package lk.ijse.fitnesscentre.bo.custom.impl;
 
 import lk.ijse.fitnesscentre.bo.custom.TrainerDetailsBO;
 import lk.ijse.fitnesscentre.dao.DAOFactory;
+import lk.ijse.fitnesscentre.dao.custom.QueryDAO;
 import lk.ijse.fitnesscentre.dao.custom.TrainerDetailsDAO;
 import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.dto.TrainerDetailsDTO;
@@ -17,12 +18,13 @@ import java.util.List;
 public class TrainerDetailsBOImpl implements TrainerDetailsBO {
 
     TrainerDetailsDAO trainerDetailsDAO = (TrainerDetailsDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.TRAINER_DETAILS);
+    QueryDAO queryDAO = (QueryDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERY_DAO);
 
     @Override
     public List<TrainerDetailsDTO> getAllTrainerDetails() throws SQLException {
 
         List<TrainerDetailsDTO> allTrainerDetails = new ArrayList<>();
-        List<TrainerDetails> all = trainerDetailsDAO.getAll();
+        List<TrainerDetails> all = queryDAO.getTrainerDetails();
 
         for (TrainerDetails td : all) {
             allTrainerDetails.add(new TrainerDetailsDTO(td.getScheduleId(), td.getTrainerId()));

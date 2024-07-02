@@ -1,10 +1,11 @@
 package lk.ijse.fitnesscentre.dao.custom;
 
+import lk.ijse.fitnesscentre.dao.SuperDAO;
+
 import java.sql.SQLException;
 
-//import static lk.ijse.fitnesscentre.util.GMailer.generateRandomNumber;
 
-public interface CredentialDAO {
+public interface CredentialDAO extends SuperDAO {
 
     boolean checkLoginCredential(String username, String password) throws SQLException;
 
@@ -13,7 +14,5 @@ public interface CredentialDAO {
     boolean checkRegisterCredential(String username, String name, String email, String otp, String password, String confirmPW) throws SQLException;
 
     boolean updatePassword(String email, String newPW) throws SQLException;
-
-    String getUserName() throws SQLException;
 
 }

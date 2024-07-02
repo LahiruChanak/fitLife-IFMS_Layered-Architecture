@@ -12,6 +12,7 @@ import java.sql.Time;
 @Data
 
 public class PurchaseHistory {
+
     private String purchaseId;
     private String productId;
     private String productName;
@@ -22,4 +23,5 @@ public class PurchaseHistory {
     private Time time;
     private int qty;
     private double total;
+
 }

@@ -13,9 +13,8 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        ATTENDANCE, MEMBER, MEMBERSHIP, PAYMENT, PRODUCT, PURCHASE, PURCHASE_DETAILS, PURCHASE_HISTORY, SCHEDULE, SCHEDULE_DETAILS, TRAINER, TRAINER_DETAILS
+        ATTENDANCE, MEMBER, MEMBERSHIP, PAYMENT, PRODUCT, PURCHASE, PURCHASE_DETAILS, SCHEDULE, SCHEDULE_DETAILS, TRAINER, TRAINER_DETAILS, CREDENTIAL, QUERY_DAO
     }
-
 
     //Object Creation Logic
 
@@ -33,9 +32,6 @@ public class DAOFactory {
             case PAYMENT:
                 return new PaymentDAOImpl();
 
-//            case PLACE_ORDER:
-//                return new PlaceOrderDAOImpl();
-
             case PRODUCT:
                 return new ProductDAOImpl();
 
@@ -45,8 +41,8 @@ public class DAOFactory {
             case PURCHASE_DETAILS:
                 return new PurchaseDetailDAOImpl();
 
-            case PURCHASE_HISTORY:
-                return new PurchaseHistoryDAOImpl();
+            case QUERY_DAO:
+                return new QueryDAOImpl();
 
             case SCHEDULE:
                 return new ScheduleDAOImpl();
@@ -59,6 +55,9 @@ public class DAOFactory {
 
             case TRAINER_DETAILS:
                 return new TrainerDetailsDAOImpl();
+
+            case CREDENTIAL:
+                return new CredentialDAOImpl();
 
             default:
                 return null;

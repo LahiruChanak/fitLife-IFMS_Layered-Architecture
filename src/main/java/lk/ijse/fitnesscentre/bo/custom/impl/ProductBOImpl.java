@@ -3,9 +3,9 @@ package lk.ijse.fitnesscentre.bo.custom.impl;
 import javafx.scene.chart.PieChart;
 import lk.ijse.fitnesscentre.bo.custom.ProductBO;
 import lk.ijse.fitnesscentre.dao.DAOFactory;
-import lk.ijse.fitnesscentre.dao.custom.impl.ProductDAOImpl;
+import lk.ijse.fitnesscentre.dao.custom.ProductDAO;
+import lk.ijse.fitnesscentre.dao.custom.QueryDAO;
 import lk.ijse.fitnesscentre.dto.ProductDTO;
-import lk.ijse.fitnesscentre.dto.PurchaseDetailDTO;
 import lk.ijse.fitnesscentre.entity.Product;
 import lk.ijse.fitnesscentre.entity.PurchaseDetail;
 
@@ -16,7 +16,8 @@ import java.util.List;
 
 public class ProductBOImpl implements ProductBO {
 
-    ProductDAOImpl productDAO = (ProductDAOImpl) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PRODUCT);
+    ProductDAO productDAO = (ProductDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PRODUCT);
+    QueryDAO queryDAO = (QueryDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERY_DAO);
 
     @Override
     public boolean addProduct(ProductDTO dto) throws SQLException {
@@ -89,7 +90,7 @@ public class ProductBOImpl implements ProductBO {
 
     @Override
     public void productSales(PieChart pieChart) throws SQLException {
-        productDAO.productSales(pieChart);
+        queryDAO.productSales(pieChart);
     }
 
 }

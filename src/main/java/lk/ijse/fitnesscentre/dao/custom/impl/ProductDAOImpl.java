@@ -109,33 +109,6 @@ public class ProductDAOImpl implements ProductDAO {
         return SQLUtil.execute("UPDATE product SET qtyOnHand = qtyOnHand - ? WHERE productId = ?", entity.getQty(), entity.getProductId());
     }
 
-    @Override
-    public void productSales(PieChart pieChart) throws SQLException {
-
-        ResultSet resultSet = SQLUtil.execute("SELECT productName, SUM(unitPrice * qty) AS productTotal FROM product p JOIN purchaseDetails pd ON p.productId = pd.productId group by productName");
-
-        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-
-        while (resultSet.next()) {
-            String productName = resultSet.getString("productName");
-            double productTotal = resultSet.getDouble("productTotal");
-            data.add(new PieChart.Data(productName, productTotal));
-        }
-
-        pieChart.setData(data);
-
-        List<String> colors = Arrays.asList(
-                "#d63031", "#fd79a8", "#6c5ce7", "#636e72", "#0984e3",
-                "#fdcb6e", "#00b894", "#3c40c6", "#0be881", "#ffa801",
-                "#34e7e4", "#3d3d3d", "#f5cd79", "#f19066", "#3F51B5"
-        );
-
-        for (int i = 0; i < pieChart.getData().size(); i++) {
-            PieChart.Data slice = pieChart.getData().get(i);
-            slice.getNode().setStyle("-fx-pie-color: " + colors.get(i % colors.size()) + ";");
-        }
-    }
-
 
     //Not Implemented
 
