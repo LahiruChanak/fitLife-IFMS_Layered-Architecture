@@ -14,7 +14,7 @@ public class CredentialDAOImpl implements CredentialDAO {
     @Override
     public boolean checkLoginCredential(String username, String password) throws SQLException {
 
-        ResultSet resultSet = SQLUtil.execute("SELECT password FROM user WHERE userName = ?", username, password);
+        ResultSet resultSet = SQLUtil.execute("SELECT password FROM user WHERE username = ?", username);
 
         if (resultSet.next()) {
             String dbPassword = resultSet.getString(1);
@@ -25,7 +25,7 @@ public class CredentialDAOImpl implements CredentialDAO {
                 new Alert(Alert.AlertType.ERROR, "Incorrect Password.").show();
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Incorrect UseId.").show();
+            new Alert(Alert.AlertType.ERROR, "Incorrect Username.").show();
         }
         return false;
     }

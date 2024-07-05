@@ -23,7 +23,6 @@ import lk.ijse.fitnesscentre.bo.custom.ProductBO;
 import lk.ijse.fitnesscentre.dto.ProductDTO;
 import lk.ijse.fitnesscentre.entity.Product;
 import lk.ijse.fitnesscentre.view.tdm.ProductTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.ProductDAOImpl;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
@@ -37,7 +36,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreFormController {
+public class ProductFormController {
 
     @FXML
     public AnchorPane storePane;

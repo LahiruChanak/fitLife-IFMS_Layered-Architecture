@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="forgotPWPane" prefHeight="540.0" prefWidth="480.0" style="-fx-background-color: #00000075; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.ForgotPWPaneController">
+<Pane fx:id="forgotPWPane" prefHeight="540.0" prefWidth="480.0" style="-fx-background-color: transparent; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.ForgotPWPaneController">
    <children>
       <Label layoutX="74.0" layoutY="24.0" text="Forgot Username Password" textFill="WHITE">
          <font>

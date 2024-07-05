@@ -64,8 +64,8 @@ public class LoginPaneController {
 
         try {
             if (credentialBO.checkLoginCredential(username, password)) {
+                //CredentialBOImpl.userName = username;
                 navigateToDashboard();
-                CredentialBOImpl.userName = username;
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details.").show();
