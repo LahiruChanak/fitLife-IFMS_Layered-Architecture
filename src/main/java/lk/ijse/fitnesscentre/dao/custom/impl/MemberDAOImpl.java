@@ -24,7 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FROM member WHERE id = ?", id);
+        return SQLUtil.execute("DELETE FROM member WHERE memberId = ?", id);
     }
 
     @Override

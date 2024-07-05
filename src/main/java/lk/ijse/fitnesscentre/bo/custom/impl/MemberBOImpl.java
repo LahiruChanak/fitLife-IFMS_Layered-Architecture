@@ -5,9 +5,7 @@ import lk.ijse.fitnesscentre.dao.DAOFactory;
 import lk.ijse.fitnesscentre.dao.custom.MemberDAO;
 import lk.ijse.fitnesscentre.dto.MemberDTO;
 import lk.ijse.fitnesscentre.entity.Member;
-import lk.ijse.fitnesscentre.util.SQLUtil;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +44,8 @@ public class MemberBOImpl implements MemberBO {
     }
 
     @Override
-    public boolean deleteMember(String id) throws SQLException {
-        return memberDAO.delete(id);
+    public boolean deleteMember(String memberId) throws SQLException {
+        return memberDAO.delete(memberId);
     }
 
     @Override

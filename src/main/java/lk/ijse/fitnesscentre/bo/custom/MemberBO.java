@@ -1,7 +1,6 @@
 package lk.ijse.fitnesscentre.bo.custom;
 
 import lk.ijse.fitnesscentre.bo.SuperBO;
-import lk.ijse.fitnesscentre.dao.CrudDAO;
 import lk.ijse.fitnesscentre.dto.MemberDTO;
 import lk.ijse.fitnesscentre.entity.Member;
 
@@ -14,7 +13,7 @@ public interface MemberBO extends SuperBO {
 
     boolean updateMember(MemberDTO dto) throws SQLException;
 
-    boolean deleteMember(String id) throws SQLException;
+    boolean deleteMember(String memberId) throws SQLException;
 
     Member searchByMemberId(String id) throws SQLException;
 

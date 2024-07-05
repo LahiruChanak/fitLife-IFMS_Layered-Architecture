@@ -8,11 +8,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.MemberBO;
 import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
@@ -101,7 +104,7 @@ public class MemberFormController {
 
 
     @FXML
-    void btnAddOnAction(ActionEvent actionEvent) {
+    void btnAddOnAction(ActionEvent actionEvent) throws IOException {
         String memberId = txtMemberId.getText();
         String memberName = txtName.getText();
         String memberContact = txtContact.getText();
@@ -137,15 +140,27 @@ public class MemberFormController {
         try {
             boolean isAdded = memberBO.addMember(dto);
             if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Member Saved.").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Member Saved.").showAndWait();
                 clearField();
                 refreshTable();
                 loadNextMemberId();
                 setStartDate();
+                loadPaymentWindow();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void loadPaymentWindow() throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/paid_form.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Payment Form");
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     @FXML

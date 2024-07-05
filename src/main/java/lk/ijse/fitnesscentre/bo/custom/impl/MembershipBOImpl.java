@@ -5,9 +5,7 @@ import lk.ijse.fitnesscentre.dao.DAOFactory;
 import lk.ijse.fitnesscentre.dao.custom.MembershipDAO;
 import lk.ijse.fitnesscentre.dto.MembershipDTO;
 import lk.ijse.fitnesscentre.entity.Membership;
-import lk.ijse.fitnesscentre.util.SQLUtil;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +21,7 @@ public class MembershipBOImpl implements MembershipBO {
 
     @Override
     public boolean updateMembership(MembershipDTO dto) throws SQLException {
-        return membershipDAO.add(new Membership(dto.getMembershipId(), dto.getMembershipType(), dto.getDescription(), dto.getMembershipFee()));
+        return membershipDAO.update(new Membership(dto.getMembershipId(), dto.getMembershipType(), dto.getDescription(), dto.getMembershipFee()));
     }
 
     @Override

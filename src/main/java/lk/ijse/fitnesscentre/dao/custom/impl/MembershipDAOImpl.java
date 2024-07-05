@@ -25,14 +25,14 @@ public class MembershipDAOImpl implements MembershipDAO {
     }
 
     @Override
-    public boolean delete(String membershipId) throws SQLException {
-        return SQLUtil.execute("DELETE FROM membership WHERE membershipId = ?", membershipId);
+    public boolean delete(String id) throws SQLException {
+        return SQLUtil.execute("DELETE FROM membership WHERE membershipId = ?", id);
     }
 
     @Override
-    public Membership searchById(String membershipId) throws SQLException {
+    public Membership searchById(String id) throws SQLException {
 
-        ResultSet resultSet = SQLUtil.execute("SELECT * FROM membership WHERE membershipId = ?", membershipId);
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM membership WHERE membershipId = ?", id);
 
         Membership membership = null;
 
