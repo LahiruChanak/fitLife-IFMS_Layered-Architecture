@@ -106,7 +106,7 @@ public class AttendanceFormController {
         try {
             boolean isAdded = attendanceBO.addAttendance(dto);
             if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Attendance saved!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Attendance saved!").show();
                 clearField();
                 refreshTable();
                 loadNextAttendId();
@@ -134,8 +134,8 @@ public class AttendanceFormController {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/qrScanner.fxml"));
         Parent rootNode = loader.load();
 
-//        QrScannerController qrScannerFormController = loader.getController();
-//        qrScannerFormController.setAttendanceFormController(this);
+        QrScannerController qrScannerFormController = loader.getController();
+        qrScannerFormController.setAttendanceFormController(this);
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);

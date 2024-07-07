@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -153,13 +154,16 @@ public class MemberFormController {
     }
 
     public void loadPaymentWindow() throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/paid_form.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/paid_form.fxml"));
+        Parent pane = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(anchorPane));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(memberPane.getScene().getWindow());
+        stage.setScene(new Scene(pane));
         stage.setTitle("Payment Form");
-        stage.centerOnScreen();
         stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -234,7 +238,7 @@ public class MemberFormController {
 
     public void btnSearchOnAction(ActionEvent actionEvent) { txtMemberIdSearchOnAction(actionEvent); }
 
-        //Other Functions
+    //Other Functions
 
     private void clearField() {
         txtMemberId.setText("");
@@ -279,6 +283,9 @@ public class MemberFormController {
             case "Annual":
                 endDate = startDate.plusYears(1);
                 break;
+
+            default:
+                break;
         }
 
         if (endDate.getDayOfMonth() != startDate.getDayOfMonth()) {
@@ -314,6 +321,8 @@ public class MemberFormController {
                 cmbMembershipId.setValue(member.getMembershipId());
                 txtStartDate.setText(String.valueOf(member.getStartDate()));
                 txtEndDate.setText(String.valueOf(member.getEndDate()));
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Member ID not found.").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
