@@ -287,7 +287,7 @@ public class ProductFormController {
         String productId = txtProductId.getText();
 
         try {
-            Product product = productBO.searchByProductId(productId);
+            ProductDTO product = productBO.searchByProductId(productId);
 
             if (product != null) {
                 txtProductId.setText(product.getProductId());

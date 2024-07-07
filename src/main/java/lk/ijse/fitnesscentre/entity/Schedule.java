@@ -13,7 +13,4 @@ public class Schedule {
     private String scheduleName;
     private String description;
 
-    public Schedule(String scheduleName) {
-        this.scheduleName = scheduleName;
-    }
 }

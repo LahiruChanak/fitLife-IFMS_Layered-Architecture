@@ -20,7 +20,7 @@ public interface ProductBO extends SuperBO {
 
     boolean deleteProduct(String productId) throws SQLException;
 
-    Product searchByProductId(String productId) throws SQLException;
+    ProductDTO searchByProductId(String productId) throws SQLException;
 
     String currentProductId() throws SQLException;
 

@@ -11,7 +11,7 @@ public interface AttendanceBO extends SuperBO {
 
     String currentAttendanceId() throws SQLException;
 
-    Attendance searchByAttendanceId(String attendanceId) throws SQLException;
+    AttendanceDTO searchByAttendanceId(String attendanceId) throws SQLException;
 
     boolean addAttendance(AttendanceDTO dto) throws SQLException;
 

@@ -7,10 +7,7 @@ import lk.ijse.fitnesscentre.dao.custom.PurchaseDAO;
 import lk.ijse.fitnesscentre.dao.custom.PurchaseDetailDAO;
 import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.dto.PlaceOrderDTO;
-import lk.ijse.fitnesscentre.dto.PurchaseDTO;
-import lk.ijse.fitnesscentre.entity.PlaceOrder;
 import lk.ijse.fitnesscentre.entity.Purchase;
-import lk.ijse.fitnesscentre.entity.PurchaseDetail;
 
 import java.sql.Connection;
 import java.sql.SQLException;

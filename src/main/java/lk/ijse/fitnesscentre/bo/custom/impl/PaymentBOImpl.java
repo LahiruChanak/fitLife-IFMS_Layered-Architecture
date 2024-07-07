@@ -30,8 +30,16 @@ public class PaymentBOImpl implements PaymentBO {
     }
 
     @Override
-    public Payment searchByPaymentId(String paymentId) throws SQLException {
-        return paymentDAO.searchById(paymentId);
+    public PaymentDTO searchByPaymentId(String paymentId) throws SQLException {
+        Payment p = paymentDAO.searchById(paymentId);
+        return new PaymentDTO(p.getPaymentId(),
+                p.getPaymentMethod(),
+                p.getMembershipFee(),
+                p.getDate(),
+                p.getTime(),
+                p.getMembershipId(),
+                p.getMemberId()
+        );
     }
 
     @Override

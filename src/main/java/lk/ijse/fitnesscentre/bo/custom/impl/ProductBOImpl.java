@@ -47,8 +47,15 @@ public class ProductBOImpl implements ProductBO {
     }
 
     @Override
-    public Product searchByProductId(String productId) throws SQLException {
-        return productDAO.searchById(productId);
+    public ProductDTO searchByProductId(String productId) throws SQLException {
+        Product p = productDAO.searchById(productId);
+        return new ProductDTO(p.getProductId(),
+                p.getProductName(),
+                p.getUnitPrice(),
+                p.getQtyOnHand(),
+                p.getAddedDate(),
+                p.getAddedTime()
+        );
     }
 
     @Override

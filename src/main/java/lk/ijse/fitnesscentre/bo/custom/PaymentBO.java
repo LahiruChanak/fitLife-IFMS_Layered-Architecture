@@ -13,7 +13,7 @@ public interface PaymentBO extends SuperBO {
 
     boolean addPayment(PaymentDTO dto) throws SQLException;
 
-    Payment searchByPaymentId(String paymentId) throws SQLException;
+    PaymentDTO searchByPaymentId(String paymentId) throws SQLException;
 
     List<PaymentDTO> getAllPayment() throws SQLException;
 

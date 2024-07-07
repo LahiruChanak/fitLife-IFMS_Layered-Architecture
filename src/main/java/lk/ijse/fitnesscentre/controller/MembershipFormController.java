@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
+import lk.ijse.fitnesscentre.dao.custom.MembershipDAO;
 import lk.ijse.fitnesscentre.dto.MembershipDTO;
 import lk.ijse.fitnesscentre.entity.Membership;
 import lk.ijse.fitnesscentre.view.tdm.MembershipTm;
@@ -181,7 +182,7 @@ public class MembershipFormController {
         String membershipId = txtMembershipId.getText();
 
         try {
-            Membership membership = membershipBO.searchByMembershipId(membershipId);
+            MembershipDTO membership = membershipBO.searchByMembershipId(membershipId);
 
             if (membership != null) {
                 txtMembershipId.setText(membership.getMembershipId());

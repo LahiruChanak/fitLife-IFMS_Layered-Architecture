@@ -17,6 +17,7 @@ import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.MemberBO;
 import lk.ijse.fitnesscentre.bo.custom.ScheduleBO;
 import lk.ijse.fitnesscentre.bo.custom.ScheduleDetailsBO;
+import lk.ijse.fitnesscentre.dto.MemberDTO;
 import lk.ijse.fitnesscentre.dto.ScheduleDetailsDTO;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.entity.Schedule;
@@ -144,7 +145,7 @@ public class ScheduleDetailsFormController {
     public void cmbMemberIdSearchOnAction() {
         String memberId = cmbMemberId.getValue();
         try {
-            Member member = memberBO.searchByMemberId(memberId);
+            MemberDTO member = memberBO.searchByMemberId(memberId);
             if (member != null) {
                 txtMemberName.setText(member.getMemberName());
                 txtMemberName.setEditable(false);

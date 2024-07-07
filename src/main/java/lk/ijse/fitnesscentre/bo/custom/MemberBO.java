@@ -15,9 +15,9 @@ public interface MemberBO extends SuperBO {
 
     boolean deleteMember(String memberId) throws SQLException;
 
-    Member searchByMemberId(String id) throws SQLException;
+    MemberDTO searchByMemberId(String id) throws SQLException;
 
-    Member searchByContact(String contact) throws SQLException;
+    MemberDTO searchByContact(String contact) throws SQLException;
 
     List<MemberDTO> getAllMember() throws SQLException;
 

@@ -12,8 +12,8 @@
 }
 
 .table-view .column-header-background {
-    -fx-border-color: #ffffff;
-    -fx-border-width: 0 0 0.1em 0;
+    -fx-border-color: #3e3e3e;
+    -fx-border-width: 0 0 0 0;
 }
 
 .table-view .column-header-background .nested-column-header .label .text {
@@ -39,7 +39,7 @@
 .table-row-cell {
     -fx-font-size: 14;
     -fx-border-color: #ffffff;
-    -fx-table-cell-border-color: #373737;
+    -fx-table-cell-border-color: transparent;
     -fx-table-cell-border-width: 0.1em;
     -fx-border-width: 0 0 0.1em 0;
 }

@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="scannerPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.QrScannerController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="300.0" layoutX="150.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
       <Text layoutX="255.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanner">
          <font>
             <Font name="Segoe UI Semibold" size="24.0" />

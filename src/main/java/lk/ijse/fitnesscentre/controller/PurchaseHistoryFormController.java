@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,13 +10,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import lk.ijse.fitnesscentre.bo.BOFactory;
+import lk.ijse.fitnesscentre.bo.custom.PurchaseBO;
+import lk.ijse.fitnesscentre.bo.custom.PurchaseDetailBO;
 import lk.ijse.fitnesscentre.bo.custom.PurchaseHistoryBO;
 import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.dto.PurchaseHistoryDTO;
-import lk.ijse.fitnesscentre.entity.PurchaseHistory;
 import lk.ijse.fitnesscentre.view.tdm.PurchaseHistoryTm;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -43,6 +46,8 @@ public class PurchaseHistoryFormController {
     public TableColumn colQty;
     public TableColumn colTotal;
 
+    public JFXComboBox cmbPurchaseId;
+
     @FXML
     private TableView<PurchaseHistoryTm> tblPurchaseHistory;
 
@@ -50,11 +55,14 @@ public class PurchaseHistoryFormController {
     private List<PurchaseHistoryDTO> historyList = new ArrayList<>();
 
     PurchaseHistoryBO purchaseHistoryBO = (PurchaseHistoryBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE_HISTORY);
+    PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
 
     public void initialize() {
         this.historyList = getAllHistory();
         loadPurchaseTable();
+        loadPurchaseId();
         setCellValueFactory();
+        setTableViewSelectionListener();
     }
 
     @FXML
@@ -79,7 +87,7 @@ public class PurchaseHistoryFormController {
             }
 
             Map<String, Object> data = new HashMap<>();
-            data.put("PURCHASE_ID", selectedItem.getPurchaseId());
+            data.put("PURCHASE_ID", cmbPurchaseId.getValue());
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint, false);
@@ -132,6 +140,14 @@ public class PurchaseHistoryFormController {
         System.out.println("selectedItem = " + selectedItem);
     }
 
+    private void setTableViewSelectionListener() {
+        tblPurchaseHistory.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                cmbPurchaseId.setValue(newValue.getPurchaseId());
+            }
+        });
+    }
+
     private List<PurchaseHistoryDTO> getAllHistory() {
         List<PurchaseHistoryDTO> historyList = null;
         try {
@@ -141,4 +157,19 @@ public class PurchaseHistoryFormController {
         }
         return historyList;
     }
+
+    private void loadPurchaseId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = purchaseBO.getPurchaseIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbPurchaseId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -39,6 +40,21 @@
             </DropShadow>
          </effect>
       </Rectangle>
+      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="205.0" layoutY="228.0" onAction="#btnScannerOnAction" prefHeight="44.0" prefWidth="54.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/icon/qr.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
       <TableView fx:id="tblAttendance" layoutX="329.0" layoutY="132.0" prefHeight="548.0" prefWidth="719.0" stylesheets="@../asserts/css/TableStyle.css">
          <columns>
             <TableColumn fx:id="colAttendanceId" prefWidth="128.80001831054688" text="Attendance Id" />
@@ -68,34 +84,12 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtMemberId" labelFloat="true" layoutX="80.0" layoutY="230.0" onAction="#txtMemberIdSearchOnAction" onKeyReleased="#txtMemberIdOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Member Id">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </JFXTextField>
+      <JFXComboBox fx:id="cmbMemberId" labelFloat="true" layoutX="80.0" layoutY="230.0" onAction="#cmbMemberIdOnAction" prefHeight="37.0" prefWidth="131.0" promptText="Member Id" style="-fx-background-color: white;" stylesheets="@../asserts/css/ComboBox.css" />
       <JFXTextField fx:id="txtName" labelFloat="true" layoutX="80.0" layoutY="310.0" prefHeight="36.0" prefWidth="165.0" promptText="Member Name">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="200.0" layoutY="225.0" onAction="#btnScannerOnAction" prefHeight="43.0" prefWidth="29.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../asserts/icon/qr.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
       <JFXButton layoutX="121.0" layoutY="539.0" onAction="#btnAttendOnAction" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Attend" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />

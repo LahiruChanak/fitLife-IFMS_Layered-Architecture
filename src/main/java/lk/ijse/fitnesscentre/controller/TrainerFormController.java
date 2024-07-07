@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -64,13 +65,16 @@ public class TrainerFormController {
     //Button Actions
 
     public void btnTrainerDetailsOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/trainerDetails_form.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/trainerDetails_form.fxml"));
+        Parent pane = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(anchorPane));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(rootNode.getScene().getWindow());
+        stage.setScene(new Scene(pane));
         stage.setTitle("Trainer Details Form");
-        stage.centerOnScreen();
         stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
         stage.show();
     }
 

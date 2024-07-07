@@ -30,8 +30,9 @@ public class MembershipBOImpl implements MembershipBO {
     }
 
     @Override
-    public Membership searchByMembershipId(String membershipId) throws SQLException {
-        return membershipDAO.searchById(membershipId);
+    public MembershipDTO searchByMembershipId(String membershipId) throws SQLException {
+        Membership m = membershipDAO.searchById(membershipId);
+        return new MembershipDTO(m.getMembershipId(), m.getMembershipType(), m.getDescription(), m.getMembershipFee());
     }
 
     @Override
@@ -57,8 +58,9 @@ public class MembershipBOImpl implements MembershipBO {
     }
 
     @Override
-    public Membership getMembershipFee(String membershipId) throws SQLException {
-        return membershipDAO.getFee(membershipId);
+    public MembershipDTO getMembershipFee(String membershipId) throws SQLException {
+        Membership m = membershipDAO.getFee(membershipId);
+        return new MembershipDTO(m.getMembershipId(), m.getMembershipType(), m.getDescription(), m.getMembershipFee());
     }
 
     @Override

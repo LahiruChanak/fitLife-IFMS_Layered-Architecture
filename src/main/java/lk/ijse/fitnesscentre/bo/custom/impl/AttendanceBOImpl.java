@@ -20,8 +20,9 @@ public class AttendanceBOImpl implements AttendanceBO {
     }
 
     @Override
-    public Attendance searchByAttendanceId(String attendanceId) throws SQLException {
-        return attendanceDAO.searchById(attendanceId);
+    public AttendanceDTO searchByAttendanceId(String attendanceId) throws SQLException {
+        Attendance a = attendanceDAO.searchById(attendanceId);
+        return new AttendanceDTO(a.getAttendanceId(), a.getMemberName(), a.getDate(), a.getTime(), a.getMemberId());
     }
 
     @Override

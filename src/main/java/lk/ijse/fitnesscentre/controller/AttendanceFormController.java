@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -14,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -24,11 +24,10 @@ import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.AttendanceBO;
 import lk.ijse.fitnesscentre.bo.custom.MemberBO;
 import lk.ijse.fitnesscentre.dto.AttendanceDTO;
+import lk.ijse.fitnesscentre.dto.MemberDTO;
 import lk.ijse.fitnesscentre.entity.Attendance;
 import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.view.tdm.AttendanceTm;
-import lk.ijse.fitnesscentre.util.Regex;
-import lk.ijse.fitnesscentre.util.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -75,7 +74,7 @@ public class AttendanceFormController {
     private JFXTextField txtName;
 
     @FXML
-    private JFXTextField txtMemberId;
+    private JFXComboBox<String> cmbMemberId;
 
     private List<AttendanceDTO> attendanceList = new ArrayList<>();
 
@@ -83,11 +82,15 @@ public class AttendanceFormController {
     MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
 
 
+
     public void initialize() {
         this.attendanceList = getAllAttendance();
         loadAttendanceTable();
         setCellValueFactory();
         loadNextAttendId();
+        loadMemberId();
+        setAttendDate();
+        setAttendTime();
     }
 
     @FXML
@@ -96,16 +99,9 @@ public class AttendanceFormController {
         String memberName = txtName.getText();
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
-        String memberId = txtMemberId.getText();
+        String memberId = cmbMemberId.getValue();
 
         AttendanceDTO dto =new AttendanceDTO(attendanceId,memberName,date,time,memberId);
-
-        String errorMessage = isValid();
-
-        if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
-            return;
-        }
 
         try {
             boolean isAdded = attendanceBO.addAttendance(dto);
@@ -120,24 +116,8 @@ public class AttendanceFormController {
         }
     }
 
-//    @FXML
-//    void btnDeleteOnAction(ActionEvent actionEvent) {
-//        String attendanceId = txtAttendanceId.getText();
-//
-//        try {
-//            boolean isDeleted = AttendanceRepo.delete(attendanceId);
-//            if (isDeleted) {
-//                new Alert(Alert.AlertType.CONFIRMATION, "Attendance deleted.").show();
-//                clearField();
-//                refreshTable();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-//        }
-//    }
-
     private void clearField() {
-        txtMemberId.clear();
+        cmbMemberId.setValue(null);
         txtName.clear();
     }
 
@@ -154,8 +134,8 @@ public class AttendanceFormController {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/qrScanner.fxml"));
         Parent rootNode = loader.load();
 
-        QrScannerController qrScannerFormController = loader.getController();
-        qrScannerFormController.setAttendanceFormController(this);
+//        QrScannerController qrScannerFormController = loader.getController();
+//        qrScannerFormController.setAttendanceFormController(this);
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
@@ -170,9 +150,9 @@ public class AttendanceFormController {
     public void txtAttIdSearchOnAction(ActionEvent actionEvent) {
         String attendanceId = txtAttendanceId.getText();
         try {
-            Attendance attendance = attendanceBO.searchByAttendanceId(attendanceId);
+            AttendanceDTO attendance = attendanceBO.searchByAttendanceId(attendanceId);
             if (attendance != null) {
-                txtMemberId.setText(attendance.getMemberId());
+                cmbMemberId.setValue(attendance.getMemberId());
                 txtName.setText(attendance.getMemberName());
                 txtAttendDate.setText(String.valueOf(attendance.getDate()));
             }
@@ -181,11 +161,11 @@ public class AttendanceFormController {
         }
     }
 
-    public void txtMemberIdSearchOnAction() {
-        String memberId = txtMemberId.getText();
+    public void cmbMemberIdSearchOnAction() {
+        String memberId = cmbMemberId.getValue();
 
         try {
-            Member member = memberBO.searchByMemberId(memberId);
+            MemberDTO member = memberBO.searchByMemberId(memberId);
             if (member != null) {
                 txtName.setText(member.getMemberName());
             }
@@ -199,12 +179,6 @@ public class AttendanceFormController {
         setAttendDate();
         setAttendTime();
     }
-
-//    public void txtNameOnAction(ActionEvent actionEvent) { txtAttendDate.requestFocus(); }
-
-//    public void txtAttendDateOnAction(ActionEvent actionEvent) { txtAttendTime.requestFocus(); }
-
-//    public void txtAttendTimeOnAction(ActionEvent actionEvent ) throws SQLException { btnAttendOnAction(actionEvent); }
 
     private void loadNextAttendId() {
         try {
@@ -233,6 +207,7 @@ public class AttendanceFormController {
         LocalDate currentDate = LocalDate.now();
         String formattedDate = currentDate.format(formatter);
         txtAttendDate.setText(formattedDate);
+        txtAttendDate.setEditable(false);
     }
 
     private void setAttendTime() {
@@ -242,6 +217,7 @@ public class AttendanceFormController {
                 new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+        txtAttendTime.setEditable(false);
     }
 
     private void setCellValueFactory() {
@@ -287,16 +263,15 @@ public class AttendanceFormController {
     }
 
     public void qrScanner(String memberId){
-        txtMemberId.setText(memberId);
+        cmbMemberId.setValue(memberId);
 
         Platform.runLater(() -> {
-
             try{
-                Member member = memberBO.searchByMemberId(memberId);
-                if (member==null){
+                MemberDTO dto = memberBO.searchByMemberId(memberId);
+                if (dto == null){
                     new Alert(Alert.AlertType.WARNING, "Invalid Member ID").show();
                 } else {
-                    txtMemberIdSearchOnAction();
+                    cmbMemberIdSearchOnAction();
                 }
             }catch (SQLException e){
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -304,35 +279,26 @@ public class AttendanceFormController {
         });
     }
 
-    public void txtMemberIdOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.MEMBERID, txtMemberId); }
+    public void cmbMemberIdOnAction() {
+        String memberId = cmbMemberId.getValue();
+        try {
+            MemberDTO dto = memberBO.searchByMemberId(memberId);
+            if (dto != null) {
+                txtName.setText(dto.getMemberName());
+                txtName.setEditable(false);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-//    public void txtAttendanceIdOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.ATTENDANCEID, txtAttendanceId); }
-
-//    public void txtNameOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.NAME, txtName); }
-
-//    public void txtAttendDateOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.DATE, txtAttendDate); }
-
-//    public void txtAttendTimeOnKeyReleased(KeyEvent keyEvent) {}
-
-    public String isValid(){
-
-        String message = "";
-
-        if (!Regex.setTextColor(TextField.MEMBERID,txtMemberId))
-            message += "MemberId must be starts with 'M' and exactly three digits.\n\n";
-
-//        if (!Regex.setTextColor(TextField.ATTENDANCEID,txtAttendanceId))
-//            message += "AttendanceId must be starts with 'AT' and exactly three digits.\n\n";
-
-//        if (!Regex.setTextColor(TextField.NAME,txtName))
-//            message += "Name must be at least 3 letters.\n\n";
-
-
-
-//        if (!Regex.setTextColor(TextField.DATE,txtAttendDate))
-//            message += "Attend Date must be yyyy/mm/dd format.\n\n";
-
-        return message.isEmpty() ? null : message;
+    private void loadMemberId() {
+        try {
+            List<String> types = memberBO.getMemberIds();
+            cmbMemberId.getItems().addAll(types);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }

@@ -15,7 +15,7 @@ public interface MembershipBO extends SuperBO {
 
     boolean deleteMembership(String membershipId) throws SQLException;
 
-    Membership searchByMembershipId(String membershipId) throws SQLException;
+    MembershipDTO searchByMembershipId(String membershipId) throws SQLException;
 
     List<MembershipDTO> getAllMemberships() throws SQLException;
 
@@ -23,7 +23,7 @@ public interface MembershipBO extends SuperBO {
 
     String currentMembershipId() throws SQLException;
 
-    Membership getMembershipFee(String membershipId) throws SQLException;
+    MembershipDTO getMembershipFee(String membershipId) throws SQLException;
 
     String getEndDate(String membershipId) throws SQLException;
 

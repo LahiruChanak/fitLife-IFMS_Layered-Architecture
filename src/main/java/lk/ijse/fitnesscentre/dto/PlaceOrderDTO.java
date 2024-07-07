@@ -1,6 +1,5 @@
 package lk.ijse.fitnesscentre.dto;
 
-import lk.ijse.fitnesscentre.entity.Product;
 import lk.ijse.fitnesscentre.entity.PurchaseDetail;
 
 import lombok.AllArgsConstructor;

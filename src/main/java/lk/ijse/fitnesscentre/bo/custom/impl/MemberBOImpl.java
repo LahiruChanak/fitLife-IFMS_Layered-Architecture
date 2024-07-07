@@ -49,13 +49,33 @@ public class MemberBOImpl implements MemberBO {
     }
 
     @Override
-    public Member searchByMemberId(String id) throws SQLException {
-        return memberDAO.searchById(id);
+    public MemberDTO searchByMemberId(String id) throws SQLException {
+        Member m = memberDAO.searchById(id);
+        return new MemberDTO(m.getMemberId(),
+                m.getMemberName(),
+                m.getMemberContact(),
+                m.getDateOfBirth(),
+                m.getGender(),
+                m.getEmail(),
+                m.getMembershipId(),
+                m.getStartDate(),
+                m.getEndDate()
+        );
     }
 
     @Override
-    public Member searchByContact(String contact) throws SQLException {
-        return memberDAO.searchByContact(contact);
+    public MemberDTO searchByContact(String contact) throws SQLException {
+        Member m = memberDAO.searchByContact(contact);
+        return new MemberDTO(m.getMemberId(),
+                m.getMemberName(),
+                m.getMemberContact(),
+                m.getDateOfBirth(),
+                m.getGender(),
+                m.getEmail(),
+                m.getMembershipId(),
+                m.getStartDate(),
+                m.getEndDate()
+        );
     }
 
     @Override

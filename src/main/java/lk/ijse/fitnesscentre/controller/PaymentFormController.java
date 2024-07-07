@@ -22,7 +22,10 @@ import lk.ijse.fitnesscentre.bo.custom.MemberBO;
 import lk.ijse.fitnesscentre.bo.custom.MembershipBO;
 import lk.ijse.fitnesscentre.bo.custom.PaymentBO;
 import lk.ijse.fitnesscentre.dao.custom.impl.MemberDAOImpl;
+import lk.ijse.fitnesscentre.dto.MemberDTO;
+import lk.ijse.fitnesscentre.dto.MembershipDTO;
 import lk.ijse.fitnesscentre.dto.PaymentDTO;
+import lk.ijse.fitnesscentre.entity.Member;
 import lk.ijse.fitnesscentre.entity.Membership;
 import lk.ijse.fitnesscentre.entity.Payment;
 import lk.ijse.fitnesscentre.view.tdm.PaymentTm;
@@ -191,7 +194,7 @@ public class PaymentFormController {
         String paymentId = txtPaymentId.getText();
 
         try {
-            Payment payment = paymentBO.searchByPaymentId(paymentId);
+            PaymentDTO payment = paymentBO.searchByPaymentId(paymentId);
 
             if (payment != null) {
                 txtPaymentId.setText(payment.getPaymentId());
@@ -210,10 +213,23 @@ public class PaymentFormController {
     public void cmbMembershipIdOnAction() {
         String membershipId = cmbMembershipId.getValue();
         try {
-            Membership membership = membershipBO.getMembershipFee(membershipId);
+            MembershipDTO membership = membershipBO.getMembershipFee(membershipId);
             if (membership != null) {
                 txtFee.setText(String.valueOf(membership.getMembershipFee()));
                 txtFee.setEditable(false);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void cmbMemberIdOnAction() {
+        String memberId = cmbMemberId.getValue();
+        try {
+            MemberDTO member = memberBO.searchByMemberId(memberId);
+            if (member != null) {
+                txtName.setText(member.getMemberName());
+                txtName.setEditable(false);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -345,7 +361,4 @@ public class PaymentFormController {
         return message.isEmpty() ? null : message;
     }
 
-    public void cmbMemberIdOnAction(ActionEvent actionEvent) {
-
-    }
 }

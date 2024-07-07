@@ -26,6 +26,7 @@ import lk.ijse.fitnesscentre.bo.custom.*;
 import lk.ijse.fitnesscentre.bo.custom.impl.PlaceOrderBOImpl;
 import lk.ijse.fitnesscentre.db.DbConnection;
 import lk.ijse.fitnesscentre.dto.PlaceOrderDTO;
+import lk.ijse.fitnesscentre.dto.ProductDTO;
 import lk.ijse.fitnesscentre.entity.*;
 import lk.ijse.fitnesscentre.view.tdm.CartTm;
 import lk.ijse.fitnesscentre.util.Regex;
@@ -366,7 +367,7 @@ public class CartFormController {
     public void cmbProductIdSearchOnAction(ActionEvent actionEvent) {
         String prdId = cmbProductId.getValue();
         try {
-            Product product = productBO.searchByProductId(prdId);
+            ProductDTO product = productBO.searchByProductId(prdId);
             if (product != null) {
                 txtPrdName.setText(product.getProductName());
                 txtUnitPrice.setText(String.valueOf(product.getUnitPrice()));

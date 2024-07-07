@@ -27,8 +27,8 @@ public class ScheduleDetailsBOImpl implements ScheduleDetailsBO {
         List<ScheduleDetailsDTO> allScheduleDetails = new ArrayList<>();
         List<ScheduleDetails> all = queryDAO.getScheduleDetails();
 
-        for (ScheduleDetails scheduleDetails : all) {
-            allScheduleDetails.add(new ScheduleDetailsDTO(scheduleDetails.getScheduleId(),scheduleDetails.getMemberId()));
+        for (ScheduleDetails sd : all) {
+            allScheduleDetails.add(new ScheduleDetailsDTO(sd.getScheduleId(), sd.getScheduleName(), sd.getMemberId(), sd.getMemberName()));
         }
         return allScheduleDetails;
     }

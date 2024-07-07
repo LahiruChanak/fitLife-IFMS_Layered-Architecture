@@ -27,7 +27,7 @@ public class TrainerDetailsBOImpl implements TrainerDetailsBO {
         List<TrainerDetails> all = queryDAO.getTrainerDetails();
 
         for (TrainerDetails td : all) {
-            allTrainerDetails.add(new TrainerDetailsDTO(td.getScheduleId(), td.getTrainerId()));
+            allTrainerDetails.add(new TrainerDetailsDTO(td.getScheduleId(), td.getScheduleName(), td.getTrainerId(), td.getTrainerName()));
         }
         return allTrainerDetails;
     }

@@ -302,7 +302,7 @@ public class MemberFormController {
         String memberId = txtMemberId.getText();
 
         try {
-            Member member = memberBO.searchByMemberId(memberId);
+            MemberDTO member = memberBO.searchByMemberId(memberId);
 
             if (member != null) {
                 txtMemberId.setText(member.getMemberId());
@@ -324,7 +324,7 @@ public class MemberFormController {
         String memberContact = txtContact.getText();
 
         try {
-            Member member = memberBO.searchByContact(memberContact);
+            MemberDTO member = memberBO.searchByContact(memberContact);
 
             if (member != null) {
                 txtMemberId.setText(member.getMemberId());

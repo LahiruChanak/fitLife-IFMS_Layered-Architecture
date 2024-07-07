@@ -6,11 +6,41 @@
   <component name="ChangeListManager">
     <list default="true" id="cec37a68-b6e9-4736-80bd-5437541ae5a1" name="Changes" comment="final project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/AttendanceBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/AttendanceBO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/MemberBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/MemberBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/MembershipBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/MembershipBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/PaymentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/PaymentBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/ProductBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/ProductBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/PurchaseBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/PurchaseBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/AttendanceBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/AttendanceBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/MemberBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/MemberBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/MembershipBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/MembershipBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PaymentBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PaymentBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PlaceOrderBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PlaceOrderBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/ProductBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/ProductBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PurchaseBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/PurchaseBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/ScheduleDetailsBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/ScheduleDetailsBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/TrainerDetailsBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/TrainerDetailsBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CartFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CartFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/MemberDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/MemberDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/MembershipDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/MembershipDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PurchaseHistoryFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PurchaseHistoryFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/QrScannerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/QrScannerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/PurchaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/PurchaseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/PurchaseDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/PurchaseDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dto/PlaceOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dto/PlaceOrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/entity/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/entity/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/asserts/css/TableStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/asserts/css/TableStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/purchaseHistory_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/purchaseHistory_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/qrScanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/qrScanner.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,15 +303,11 @@
       <workItem from="1719974430188" duration="284000" />
       <workItem from="1720008261291" duration="145000" />
       <workItem from="1720158518020" duration="9026000" />
-      <workItem from="1720175494515" duration="1012000" />
-    </task>
-    <task id="LOCAL-00058" summary="final project">
-      <option name="closed" value="true" />
-      <created>1714726470999</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1714726470999</updated>
+      <workItem from="1720175494515" duration="11149000" />
+      <workItem from="1720234689813" duration="4632000" />
+      <workItem from="1720352233837" duration="7124000" />
+      <workItem from="1720363362927" duration="35000" />
+      <workItem from="1720363405032" duration="2281000" />
     </task>
     <task id="LOCAL-00059" summary="final project">
       <option name="closed" value="true" />
@@ -667,7 +693,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720171291253</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="final project">
+      <option name="closed" value="true" />
+      <created>1720177054729</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1720177054730</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

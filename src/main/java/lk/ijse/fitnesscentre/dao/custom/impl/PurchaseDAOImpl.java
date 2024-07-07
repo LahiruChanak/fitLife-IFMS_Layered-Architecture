@@ -6,10 +6,10 @@ import lk.ijse.fitnesscentre.entity.Purchase;
 import lk.ijse.fitnesscentre.util.SQLUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PurchaseDAOImpl implements PurchaseDAO {
-
 
     public String currentId() throws SQLException {
 
@@ -37,11 +37,20 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         return totalPurchase;
     }
 
+    public List<String> getIds() throws SQLException {
+
+        ResultSet rst = SQLUtil.execute("SELECT DISTINCT purchaseId FROM purchase");
+
+        List<String> typeList = new ArrayList<>();
+
+        while (rst.next()) {
+            typeList.add(rst.getString("purchaseId"));
+        }
+        return typeList;
+    }
+
 
     //Not Implemented
-
-    @Override
-    public List<String> getIds() throws SQLException { return List.of(); }
 
     @Override
     public int getCount() throws SQLException { return 0; }

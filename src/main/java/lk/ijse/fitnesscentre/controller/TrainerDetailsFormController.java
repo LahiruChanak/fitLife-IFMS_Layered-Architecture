@@ -17,14 +17,10 @@ import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.ScheduleBO;
 import lk.ijse.fitnesscentre.bo.custom.TrainerBO;
 import lk.ijse.fitnesscentre.bo.custom.TrainerDetailsBO;
-import lk.ijse.fitnesscentre.dao.custom.impl.ScheduleDAOImpl;
-import lk.ijse.fitnesscentre.dao.custom.impl.TrainerDAOImpl;
 import lk.ijse.fitnesscentre.dto.TrainerDetailsDTO;
 import lk.ijse.fitnesscentre.entity.Schedule;
 import lk.ijse.fitnesscentre.entity.Trainer;
-import lk.ijse.fitnesscentre.entity.TrainerDetails;
 import lk.ijse.fitnesscentre.view.tdm.TrainerDetailsTm;
-import lk.ijse.fitnesscentre.dao.custom.impl.TrainerDetailsDAOImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -173,6 +169,7 @@ public class TrainerDetailsFormController {
         String scheduleId = cmbScheduleId.getValue();
         try {
             Schedule schedule = scheduleBO.searchByScheduleId(scheduleId);
+
             if (schedule != null) {
                 txtScheduleName.setText(schedule.getScheduleName());
                 txtScheduleName.setEditable(false);
