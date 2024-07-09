@@ -39,7 +39,6 @@ public class DashboardFormController {
     private double totalFee;
     private double totalPurchase;
 
-//    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
     MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
     TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
@@ -57,7 +56,6 @@ public class DashboardFormController {
             memberCount = memberBO.getMemberCount();
             totalFee = paymentBO.getTotalPayment();
             totalPurchase = purchaseBO.getTotalPurchase();
-            //name = credentialBO.getUserName();
             paymentBO.monthlyFeeChart(barMembershipFee);
             productBO.productSales(pieChartSales);
 

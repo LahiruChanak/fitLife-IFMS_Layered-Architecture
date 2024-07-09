@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec37a68-b6e9-4736-80bd-5437541ae5a1" name="Changes" comment="final project">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/CredentialBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/CredentialBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/CredentialBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/bo/custom/impl/CredentialBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CredentialFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CredentialFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/DashboardFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/LoginPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/LoginPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/CredentialDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/CredentialDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/CredentialDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/dao/custom/impl/CredentialDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/util/GMailer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/util/GMailer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,15 +278,7 @@
       <workItem from="1720449770833" duration="656000" />
       <workItem from="1720493191524" duration="1165000" />
       <workItem from="1720494616410" duration="5839000" />
-      <workItem from="1720535429743" duration="3705000" />
-    </task>
-    <task id="LOCAL-00062" summary="final project">
-      <option name="closed" value="true" />
-      <created>1714833284688</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1714833284688</updated>
+      <workItem from="1720535429743" duration="4119000" />
     </task>
     <task id="LOCAL-00063" summary="final project">
       <option name="closed" value="true" />
@@ -680,7 +664,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720494341491</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="final project">
+      <option name="closed" value="true" />
+      <created>1720539257889</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1720539257895</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
