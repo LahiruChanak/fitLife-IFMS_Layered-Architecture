@@ -15,5 +15,6 @@ public interface CredentialBO extends SuperBO {
 
     boolean updatePassword(String email, String newPW) throws SQLException;
 
+    String getUsrName(String username) throws SQLException;
 
 }

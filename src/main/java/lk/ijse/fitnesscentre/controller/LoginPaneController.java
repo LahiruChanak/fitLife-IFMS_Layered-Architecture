@@ -64,7 +64,7 @@ public class LoginPaneController {
 
         try {
             if (credentialBO.checkLoginCredential(username, password)) {
-                //CredentialBOImpl.userName = username;
+                CredentialBOImpl.userName = credentialBO.getUsrName(username);
                 navigateToDashboard();
             }
         } catch (SQLException e) {

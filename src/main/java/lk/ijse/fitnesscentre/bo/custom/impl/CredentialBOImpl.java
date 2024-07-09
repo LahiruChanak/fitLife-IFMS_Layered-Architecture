@@ -3,7 +3,6 @@ package lk.ijse.fitnesscentre.bo.custom.impl;
 import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
 import lk.ijse.fitnesscentre.dao.DAOFactory;
 import lk.ijse.fitnesscentre.dao.custom.CredentialDAO;
-import lk.ijse.fitnesscentre.util.SQLUtil;
 
 import java.sql.SQLException;
 
@@ -31,12 +30,12 @@ public class CredentialBOImpl implements CredentialBO {
 
     @Override
     public boolean updatePassword(String email, String newPW) throws SQLException {
-        return SQLUtil.execute("UPDATE user SET password = ? WHERE email = ?", email, newPW);
+        return credentialDAO.updatePassword(email, newPW);
     }
 
-//    @Override
-//    public String getUserName() throws SQLException {
-//        return userName;
-//    }
+    @Override
+    public String getUsrName(String username) throws SQLException {
+        return credentialDAO.getUsrName(username);
+    }
 
 }

@@ -84,19 +84,23 @@ public class GMailer {
 //                + "Use this OTP to gain Access ."
 //                + "</div>";
 
+    private static final String senderEmail = "fitlifeifms@gmail.com";
+    private static final String password = "flpe urli iofh ecja";
+
     public static boolean sendEmail(String recipientEmail) {
-        // Sender's email and password
-        final String senderEmail = "fitlifeifms@gmail.com";
-        final String password = "flpe urli iofh ecja"; // Replace with your Gmail password or app-specific password
+//        // Sender's email and password
+//        final String senderEmail = "edusync58@gmail.com";
+//        final String password = "poae fzac goul zgvs";
 
         // Setup mail server properties
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", "465");
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
-        // Create a session with authentication
+        // Get the Session object
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -104,7 +108,7 @@ public class GMailer {
             }
         });
 
-        session.setDebug(true); // Enable debug mode for detailed logs
+        session.setDebug(true);
 
         try {
             // Create a MimeMessage object
@@ -115,11 +119,10 @@ public class GMailer {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
 
             // Set email subject
-            message.setSubject("Email Verification");
+            message.setSubject("OTP Verification");
 
-            // Generate OTP and set it in the email content
-            String otp = generateOTP();
-            message.setText("Your OTP code is: " + otp);
+            // Set email content
+            message.setText("Your OTP code is: " + generateOTP());
 
             // Send the message
             Transport.send(message);
@@ -128,15 +131,14 @@ public class GMailer {
 
         } catch (MessagingException e) {
             e.printStackTrace();
-            // Display error message
-            System.out.println("Failed to send email: " + e.getMessage());
+            new Alert(Alert.AlertType.ERROR, "Failed to send email: " + e.getMessage()).show();
             return false;
         }
     }
 
     public static String generateOTP() {
-        // Generate a 6-digit OTP
-        int otp = (int) ((Math.random() * 900000) + 100000);
+        // Generate a 5-digit OTP
+        int otp = (int) ((Math.random() * 90000) + 10000);
         return String.valueOf(otp);
     }
 

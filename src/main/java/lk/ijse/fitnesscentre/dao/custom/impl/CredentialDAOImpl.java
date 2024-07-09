@@ -42,7 +42,7 @@ public class CredentialDAOImpl implements CredentialDAO {
             return false;
         }
 
-        ResultSet resultSet = SQLUtil.execute("SELECT email FROM user", email, otp, newPW, confirmPW);
+        ResultSet resultSet = SQLUtil.execute("SELECT email FROM user", email, newPW, confirmPW);
 
         if (resultSet.next()) {
             String dbEmail = resultSet.getString(1);
@@ -71,12 +71,22 @@ public class CredentialDAOImpl implements CredentialDAO {
             }
             return false;
         }
-        return SQLUtil.execute("Insert INTO user VALUES (?, ?, ?, ?)", username, name, email, otp, password);
+        return SQLUtil.execute("Insert INTO user VALUES (?, ?, ?, ?)", username, name, email, password);
     }
 
     @Override
     public boolean updatePassword(String email, String newPW) throws SQLException {
         return SQLUtil.execute("UPDATE user SET password = ? WHERE email = ?", email, newPW);
+    }
+
+    @Override
+    public String getUsrName(String username) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT name FROM user WHERE username = ?", username);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 
 }

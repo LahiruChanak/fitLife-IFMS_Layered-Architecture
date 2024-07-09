@@ -15,4 +15,6 @@ public interface CredentialDAO extends SuperDAO {
 
     boolean updatePassword(String email, String newPW) throws SQLException;
 
+    String getUsrName(String username) throws SQLException;
+
 }
