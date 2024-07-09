@@ -40,7 +40,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="205.0" layoutY="228.0" onAction="#btnScannerOnAction" prefHeight="44.0" prefWidth="54.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="205.0" layoutY="228.0" onAction="#btnScannerOnAction" prefHeight="44.0" prefWidth="54.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -64,7 +64,7 @@
             <TableColumn fx:id="colMemberId" prefWidth="123.9999877929688" text="Member Id" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="107.0" layoutY="650.0" onAction="#btnBackOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="107.0" layoutY="650.0" onAction="#btnBackOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -90,7 +90,7 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="121.0" layoutY="539.0" onAction="#btnAttendOnAction" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Attend" textFill="WHITE">
+      <JFXButton contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="111.0" layoutY="539.0" onAction="#btnAttendOnAction" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Attend" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

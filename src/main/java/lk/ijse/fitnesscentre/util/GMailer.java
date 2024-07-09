@@ -1,6 +1,6 @@
 package lk.ijse.fitnesscentre.util;
 
-import com.google.api.services.gmail.Gmail;
+import javafx.scene.control.Alert;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -9,8 +9,8 @@ import java.util.Properties;
 
 public class GMailer {
 
-    private static final String TEST_EMAIL = "fitlifeifms@gmail.com";
-    private static Gmail service = null;
+//    private static final String TEST_EMAIL = "fitlifeifms@gmail.com";
+//    private static Gmail service = null;
 
 //    public GMailer() throws Exception {
 //        NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -63,64 +63,81 @@ public class GMailer {
 //        }
 //    }
 
-    public static String sendMail(String email) {
+//        int otp = generateOTP();
+//
+//        String msg = "<div style='border:1px solid #e2e2e2; padding:20px'>"
+//                + "<h3>"
+//                + "We received a request to get OTP Code "
+//                + "<br>"
+//                + "Your OTP Code is , "
+//                + "<br>"
+//                + "</h3>"
+//                + "<p>"
+//                + "<center>"
+//                + "<h1>"
+//                + "<b>"
+//                + otp
+//                + "</b>"
+//                + "</h1>"
+//                + "</center>"
+//                + "</p>"
+//                + "Use this OTP to gain Access ."
+//                + "</div>";
 
+    public static boolean sendEmail(String recipientEmail) {
+        // Sender's email and password
+        final String senderEmail = "fitlifeifms@gmail.com";
+        final String password = "flpe urli iofh ecja"; // Replace with your Gmail password or app-specific password
+
+        // Setup mail server properties
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth", true);
-        properties.put("mail.smtp.starttls.enable", true);
-        properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
 
-
-        String user = "fitlifeifms@gmail.com";
-        String password = "xyjm aczv cibv vsux";
-
+        // Create a session with authentication
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user, password);
+                return new PasswordAuthentication(senderEmail, password);
             }
         });
 
-        int otp = generateOTP();
-
-        String msg = "<div style='border:1px solid #e2e2e2; padding:20px'>"
-                + "<h3>"
-                + "We received a request to get OTP Code "
-                + "<br>"
-                + "Your OTP Code is , "
-                + "<br>"
-                + "</h3>"
-                + "<p>"
-                + "<center>"
-                + "<h1>"
-                + "<b>"
-                + otp
-                + "</b>"
-                + "</h1>"
-                + "</center>"
-                + "</p>"
-                + "Use this OTP to gain Access ."
-                + "</div>";
+        session.setDebug(true); // Enable debug mode for detailed logs
 
         try {
-            javax.mail.Message message = new MimeMessage(session);
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setFrom(new InternetAddress(user));
-            message.setSubject(" OTP Verification");
-            message.setContent(msg, "text/html");
+            // Create a MimeMessage object
+            Message message = new MimeMessage(session);
 
+            // Set the sender and recipient addresses
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+
+            // Set email subject
+            message.setSubject("Email Verification");
+
+            // Generate OTP and set it in the email content
+            String otp = generateOTP();
+            message.setText("Your OTP code is: " + otp);
+
+            // Send the message
             Transport.send(message);
 
-        } catch (Exception e) {
+            return true;
+
+        } catch (MessagingException e) {
             e.printStackTrace();
+            // Display error message
+            System.out.println("Failed to send email: " + e.getMessage());
+            return false;
         }
-        return String.valueOf(otp);
     }
 
-    public static int generateOTP() {
-        int otp = (int) (Math.random() * 90000) + 10000;
-        return otp;
+    public static String generateOTP() {
+        // Generate a 6-digit OTP
+        int otp = (int) ((Math.random() * 900000) + 100000);
+        return String.valueOf(otp);
     }
 
 }

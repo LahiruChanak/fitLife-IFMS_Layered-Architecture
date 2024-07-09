@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="cartPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fitnesscentre.controller.CartFormController">
    <children>
-      <JFXButton layoutX="37.0" layoutY="658.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="37.0" layoutY="658.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: #121110; -fx-background-radius: 15;" text="Back" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -41,8 +41,8 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <JFXComboBox fx:id="cmbMemberId" labelFloat="true" layoutX="79.0" layoutY="204.8" onAction="#cmbMemberIdOnAction" prefHeight="38.0" prefWidth="165.0" promptText="Member Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="205.0" />
-      <JFXButton layoutX="156.0" layoutY="657.0" onAction="#btnAddToCartOnAction" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Add to Cart" textFill="WHITE">
+      <JFXComboBox fx:id="cmbMemberId" labelFloat="true" layoutX="89.0" layoutY="204.8" onAction="#cmbMemberIdOnAction" prefHeight="38.0" prefWidth="165.0" promptText="Member Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="204.8" />
+      <JFXButton focusTraversable="false" layoutX="156.0" layoutY="657.0" onAction="#btnAddToCartOnAction" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Add to Cart" textFill="WHITE">
 
          <font>
             <Font name="System Bold" size="16.0" />
@@ -88,7 +88,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <JFXButton layoutX="520.0" layoutY="633.0" onAction="#btnPlaceOrderOnAction" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Place Order" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="520.0" layoutY="633.0" onAction="#btnPlaceOrderOnAction" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #0be881; -fx-background-radius: 10;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -99,8 +99,11 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton graphicTextGap="0.0" layoutX="727.0" layoutY="635.0" onAction="#btnPurchaseHistoryOnAction" prefHeight="43.0" prefWidth="180.0" style="-fx-background-color: #121110; -fx-background-radius: 10;" text="Purchase History" textFill="WHITE">
+      <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="727.0" layoutY="635.0" onAction="#btnPurchaseHistoryOnAction" prefHeight="43.0" prefWidth="180.0" style="-fx-background-color: #121110; -fx-background-radius: 10;" text="Purchase History" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -111,6 +114,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="50.0" layoutX="614.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="363.0">
          <effect>
@@ -136,28 +142,28 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <JFXComboBox fx:id="cmbProductId" labelFloat="true" layoutX="79.0" layoutY="276.6" onAction="#cmbProductIdSearchOnAction" prefHeight="36.0" prefWidth="166.0" promptText="Product Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="276.6" />
-      <JFXTextField fx:id="txtPurchaseId" labelFloat="true" layoutX="79.0" layoutY="136.0" prefHeight="36.0" prefWidth="165.0" promptText="Purchase Id" style="-fx-background-color: #f1f2f6;">
+      <JFXComboBox fx:id="cmbProductId" labelFloat="true" layoutX="89.0" layoutY="276.8" onAction="#cmbProductIdSearchOnAction" prefHeight="36.0" prefWidth="166.0" promptText="Product Id" style="-fx-background-color: #f1f2f6;" styleClass="scroll-bar" stylesheets="@../asserts/css/ComboBox.css" AnchorPane.topAnchor="276.8" />
+      <JFXTextField fx:id="txtPurchaseId" labelFloat="true" layoutX="89.0" layoutY="136.0" prefHeight="36.0" prefWidth="165.0" promptText="Purchase Id" style="-fx-background-color: #f1f2f6;">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPrdName" labelFloat="true" layoutX="79.0" layoutY="348.0" prefHeight="36.0" prefWidth="165.0" promptText="Product Name" style="-fx-background-color: #f1f2f6;">
+      <JFXTextField fx:id="txtPrdName" labelFloat="true" layoutX="89.0" layoutY="348.0" prefHeight="36.0" prefWidth="165.0" promptText="Product Name" style="-fx-background-color: #f1f2f6;">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="79.0" layoutY="421.0" prefHeight="36.0" prefWidth="165.0" promptText="Unit Price" style="-fx-background-color: #f1f2f6;">
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="89.0" layoutY="421.0" prefHeight="36.0" prefWidth="165.0" promptText="Unit Price" style="-fx-background-color: #f1f2f6;">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="80.0" layoutY="494.0" prefHeight="36.0" prefWidth="165.0" promptText="Qty On Hand" style="-fx-background-color: #f1f2f6;">
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="90.0" layoutY="494.0" prefHeight="36.0" prefWidth="165.0" promptText="Qty On Hand" style="-fx-background-color: #f1f2f6;">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="80.0" layoutY="565.0" onAction="#txtQtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Qty" style="-fx-background-color: #f1f2f6;">
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="90.0" layoutY="565.0" onAction="#txtQtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="36.0" prefWidth="165.0" promptText="Qty" style="-fx-background-color: #f1f2f6;">
          <font>
             <Font size="15.0" />
          </font>

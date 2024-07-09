@@ -40,7 +40,7 @@
                   <Font name="Segoe UI Semibold" size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../asserts/icon/schedule.png" />
                      </image>

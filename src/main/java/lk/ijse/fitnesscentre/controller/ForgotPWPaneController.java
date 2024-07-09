@@ -13,13 +13,15 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
-import lk.ijse.fitnesscentre.util.GMailer;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+
+import static lk.ijse.fitnesscentre.util.GMailer.sendEmail;
+
 
 public class ForgotPWPaneController {
 
@@ -33,6 +35,7 @@ public class ForgotPWPaneController {
     public JFXPasswordField txtConfirmPW;
 
     CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
+
 
     public void btnChangeOnAction(ActionEvent actionEvent) {
         String email = txtEmail.getText();
@@ -71,8 +74,7 @@ public class ForgotPWPaneController {
     }
 
     public void btnSendOnAction(ActionEvent actionEvent) throws Exception {
-        GMailer gMailer = new GMailer();
-        gMailer.sendMail(txtEmail.getText());
+        sendEmail(txtEmail.getText());
 
         txtOTP.requestFocus();
     }

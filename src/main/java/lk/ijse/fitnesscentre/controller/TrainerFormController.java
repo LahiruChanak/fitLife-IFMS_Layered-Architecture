@@ -100,6 +100,7 @@ public class TrainerFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Added.").show();
                 clearField();
                 refreshTable();
+                loadNextId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -130,6 +131,7 @@ public class TrainerFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Updated.").show();
                 refreshTable();
                 clearField();
+                loadNextId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -145,6 +147,7 @@ public class TrainerFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Trainer Deleted.").show();
                 refreshTable();
                 clearField();
+                loadNextId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
