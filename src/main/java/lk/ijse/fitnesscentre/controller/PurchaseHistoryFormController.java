@@ -57,6 +57,7 @@ public class PurchaseHistoryFormController {
     PurchaseHistoryBO purchaseHistoryBO = (PurchaseHistoryBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE_HISTORY);
     PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
 
+
     public void initialize() {
         this.historyList = getAllHistory();
         loadPurchaseTable();
@@ -79,10 +80,10 @@ public class PurchaseHistoryFormController {
             JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/ReportNew.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-            PurchaseHistoryTm selectedItem = tblPurchaseHistory.getSelectionModel().getSelectedItem();
+//            PurchaseHistoryTm selectedItem = tblPurchaseHistory.getSelectionModel().getSelectedItem();
 
-            if (selectedItem == null) {
-                new Alert(Alert.AlertType.ERROR, "Please select a purchase item").show();
+            if (cmbPurchaseId.getValue() == null) {
+                new Alert(Alert.AlertType.ERROR, "Please select a Purchase Id").show();
                 return;
             }
 

@@ -100,10 +100,10 @@ public class CartFormController {
     private final ObservableList<CartTm> cartList = FXCollections.observableArrayList();
 
     //BO Objects
-    private final MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
-    private final ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
-    private final PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
-    private PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
+    MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
+    ProductBO productBO = (ProductBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PRODUCT);
+    PurchaseBO purchaseBO = (PurchaseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PURCHASE);
+    PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
 
 
     @FXML
@@ -273,10 +273,6 @@ public class CartFormController {
         cartPane.getChildren().add(registerPane);
     }
 
-    public CartFormController() {
-        this.placeOrderBO = new PlaceOrderBOImpl(); // Initialize with the correct implementation
-    }
-
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
         String purchaseId = txtPurchaseId.getText();
@@ -286,6 +282,11 @@ public class CartFormController {
         String memberId = cmbMemberId.getValue();
 
 //        var purchase = new Purchase(purchaseId, purchaseDate, purchaseTime, totalPrice, memberId);
+
+        if (tblCart.getItems() == null) {
+            new Alert(Alert.AlertType.ERROR, "Cart is Empty").show();
+            return;
+        }
 
         List<PurchaseDetail> pdList = new ArrayList<>();
 

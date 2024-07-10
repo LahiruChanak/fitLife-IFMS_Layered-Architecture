@@ -60,6 +60,9 @@ public class BOFactory {
             case TRAINER_DETAILS:
                 return new TrainerDetailsBOImpl();
 
+            case PLACE_ORDER:
+                return new PlaceOrderBOImpl();
+
             default:
                 return null;
         }
