@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -34,8 +35,12 @@ public class ForgotPWPaneController {
     public JFXPasswordField txtNewPW;
     public JFXPasswordField txtConfirmPW;
 
+    public JFXButton btnSend;
+
     CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
+
+    public void initialize() { btnSend.setTooltip(new Tooltip("Send")); }
 
     public void btnChangeOnAction(ActionEvent actionEvent) {
         String email = txtEmail.getText();

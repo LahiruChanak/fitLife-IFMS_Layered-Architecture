@@ -5,7 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec37a68-b6e9-4736-80bd-5437541ae5a1" name="Changes" comment="final project">
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/DashboardFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ForgotPWPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ForgotPWPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/RegisterPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/RegisterPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/forgotPWPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/forgotPWPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/member_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/member_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/membership_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/membership_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/paid_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/paid_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/payment_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/payment_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registerPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registerPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/scheduleDetails_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/scheduleDetails_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/schedule_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/schedule_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/trainerDetails_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/trainerDetails_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/trainer_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/trainer_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +88,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.DashboardFormController.executor&quot;: &quot;Run&quot;,
     &quot;Application.DbConnection.executor&quot;: &quot;Run&quot;,
     &quot;Application.GMailer.executor&quot;: &quot;Run&quot;,
     &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
@@ -278,23 +302,8 @@
       <workItem from="1720449770833" duration="656000" />
       <workItem from="1720493191524" duration="1165000" />
       <workItem from="1720494616410" duration="5839000" />
-      <workItem from="1720535429743" duration="4119000" />
-    </task>
-    <task id="LOCAL-00063" summary="final project">
-      <option name="closed" value="true" />
-      <created>1714833307588</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1714833307588</updated>
-    </task>
-    <task id="LOCAL-00064" summary="final project">
-      <option name="closed" value="true" />
-      <created>1714834655083</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1714834655083</updated>
+      <workItem from="1720535429743" duration="5819000" />
+      <workItem from="1720590341609" duration="4273000" />
     </task>
     <task id="LOCAL-00065" summary="final project">
       <option name="closed" value="true" />
@@ -672,7 +681,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720539257895</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="final project">
+      <option name="closed" value="true" />
+      <created>1720539654644</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1720539654644</updated>
+    </task>
+    <task id="LOCAL-00113" summary="final project">
+      <option name="closed" value="true" />
+      <created>1720539843166</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1720539843166</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

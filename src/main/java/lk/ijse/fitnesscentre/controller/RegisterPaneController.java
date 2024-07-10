@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -26,6 +27,7 @@ public class RegisterPaneController {
     public Pane registerPane;
     public JFXButton btnSignUp;
     public JFXButton btnCancel;
+    public JFXButton btnSend;
     public JFXTextField txtUsername;
     public JFXTextField txtName;
     public JFXTextField txtEmail;
@@ -34,6 +36,11 @@ public class RegisterPaneController {
     public JFXPasswordField txtConfirmPW;
 
     CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
+
+
+    public void initialize() {
+        btnSend.setTooltip(new Tooltip("Send"));
+    }
 
     public void btnSignUpOnAction(ActionEvent actionEvent) throws IOException {
 

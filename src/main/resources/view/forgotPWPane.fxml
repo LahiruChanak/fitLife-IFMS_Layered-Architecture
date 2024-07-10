@@ -36,16 +36,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXPasswordField fx:id="txtNewPW" labelFloat="true" layoutX="85.0" layoutY="270.0" onAction="#txtNewPWOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="New Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXPasswordField>
-      <JFXPasswordField fx:id="txtConfirmPW" labelFloat="true" layoutX="85.0" layoutY="350.0" onAction="#txtConfirmPWOnAction" onKeyReleased="#txtConfirmPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Confirm Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXPasswordField>
       <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="85.0" layoutY="110.0" onAction="#txtEmailOnAction" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Email" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
          <font>
             <Font size="16.0" />
@@ -56,7 +46,17 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="353.0" layoutY="187.0" onAction="#btnSendOnAction" prefHeight="43.0" prefWidth="49.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+      <JFXPasswordField fx:id="txtNewPW" labelFloat="true" layoutX="85.0" layoutY="270.0" onAction="#txtNewPWOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="New Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXPasswordField fx:id="txtConfirmPW" labelFloat="true" layoutX="85.0" layoutY="350.0" onAction="#txtConfirmPWOnAction" onKeyReleased="#txtConfirmPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Confirm Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton fx:id="btnSend" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="353.0" layoutY="187.0" onAction="#btnSendOnAction" prefHeight="43.0" prefWidth="49.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

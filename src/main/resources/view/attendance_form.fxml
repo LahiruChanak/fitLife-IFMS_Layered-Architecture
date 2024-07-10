@@ -40,7 +40,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="205.0" layoutY="228.0" onAction="#btnScannerOnAction" prefHeight="44.0" prefWidth="54.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+      <JFXButton fx:id="btnScan" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="205.0" layoutY="228.0" onAction="#btnScannerOnAction" prefHeight="44.0" prefWidth="54.0" style="-fx-background-color: transparent;" text=" " textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

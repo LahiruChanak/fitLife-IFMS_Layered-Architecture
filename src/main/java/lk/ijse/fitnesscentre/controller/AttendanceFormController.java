@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
@@ -76,6 +77,8 @@ public class AttendanceFormController {
     @FXML
     private JFXComboBox<String> cmbMemberId;
 
+    public JFXButton btnScan;
+
     private List<AttendanceDTO> attendanceList = new ArrayList<>();
 
     AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
@@ -91,6 +94,8 @@ public class AttendanceFormController {
         loadMemberId();
         setAttendDate();
         setAttendTime();
+
+        btnScan.setTooltip(new Tooltip("Scan"));
     }
 
     @FXML

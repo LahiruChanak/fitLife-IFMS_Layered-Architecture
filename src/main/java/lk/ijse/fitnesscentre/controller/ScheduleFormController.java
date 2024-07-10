@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +48,12 @@ public class ScheduleFormController {
     public TableColumn colName;
     public TableColumn colDescription;
 
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
+
     @FXML
     private TableView<ScheduleTm> tblSchedule;
 
@@ -53,6 +61,14 @@ public class ScheduleFormController {
 
     ScheduleBO scheduleBO = (ScheduleBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE);
 
+
+    public void initialize() {
+        loadNextId();
+        this.scheduleList =getAllSchedules();
+        loadScheduleTable();
+        setCellValueFactory();
+        hoverText();
+    }
 
     //Button Actions
 
@@ -234,11 +250,12 @@ public class ScheduleFormController {
         return "S001";
     }
 
-    public void initialize() {
-        loadNextId();
-        this.scheduleList =getAllSchedules();
-        loadScheduleTable();
-        setCellValueFactory();
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     //VALIDATION

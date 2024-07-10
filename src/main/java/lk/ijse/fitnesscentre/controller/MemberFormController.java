@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -96,6 +97,12 @@ public class MemberFormController {
 
     @FXML
     private TableView<MemberTm> tblMember;
+
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
 
     private List<MemberDTO> memberList = new ArrayList<>();
 
@@ -459,6 +466,15 @@ public class MemberFormController {
         setCellValueFactory();
         loadGenderTypes();
         loadMembershipIds();
+        hoverText();
+    }
+
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     public void btnAttendanceOnAction(ActionEvent actionEvent) throws IOException {
@@ -508,6 +524,10 @@ public class MemberFormController {
             message += "EndDate must be yyyy/mm/dd format.\n\n";
 
         return message.isEmpty() ? null : message;
+    }
+
+    public void btnAddOnHover(MouseEvent mouseEvent) {
+//        btnAdd.setTooltip(new Tooltip("Add"));
     }
 
 }

@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -53,6 +55,12 @@ public class TrainerFormController {
     public TableColumn colContact;
     public TableColumn colExperience;
 
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
+
     @FXML
     private TableView<TrainerTm> tblTrainer;
 
@@ -61,6 +69,14 @@ public class TrainerFormController {
     //BO Objects
     TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
 
+
+    public void initialize() {
+        loadNextId();
+        this.trainerList =getAllTrainers();
+        loadTrainerTable();
+        setCellValueFactory();
+        hoverText();
+    }
 
     //Button Actions
 
@@ -247,11 +263,12 @@ public class TrainerFormController {
         return "T001";
     }
 
-    public void initialize() {
-        loadNextId();
-        this.trainerList =getAllTrainers();
-        loadTrainerTable();
-        setCellValueFactory();
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     //VALIDATION

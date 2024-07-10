@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -41,6 +43,11 @@ public class TrainerDetailsFormController {
     public JFXTextField txtScheduleName;
     public JFXTextField txtTrainerName;
 
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+
     @FXML
     private TableView<TrainerDetailsTm> tblTrainerDetails;
 
@@ -52,12 +59,15 @@ public class TrainerDetailsFormController {
     ScheduleBO scheduleBO = (ScheduleBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.SCHEDULE);
     TrainerBO trainerBO = (TrainerBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.TRAINER);
 
+
+
     public void initialize() {
         this.trainerDetailsList = getAllTrainerDetails();
         setCellValueFactory();
         loadTrainerDetailsTable();
         loadScheduleId();
         loadTrainerId();
+        hoverText();
     }
 
     @FXML
@@ -231,6 +241,13 @@ public class TrainerDetailsFormController {
             throw new RuntimeException(e);
         }
         return trainerDetailsList;
+    }
+
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
 }

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -55,11 +56,25 @@ public class MembershipFormController {
     public TableColumn colMembershipFee;
 
     public JFXButton btnPayment;
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
 
     private List<MembershipDTO> membershipList = new ArrayList<>();
 
     MembershipBO membershipBO = (MembershipBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBERSHIP);
 
+
+    public void initialize() {
+        loadNextId();
+        loadMembershipTypes();
+        this.membershipList = getAllMembership();
+        setCellValueFactory();
+        loadMembershipTable();
+        hoverText();
+    }
 
     //Button Actions
     public void btnPaymentOnAction(ActionEvent actionEvent) throws IOException {
@@ -301,12 +316,12 @@ public class MembershipFormController {
         return "MS001";
     }
 
-    public void initialize() {
-        loadNextId();
-        loadMembershipTypes();
-        this.membershipList = getAllMembership();
-        setCellValueFactory();
-        loadMembershipTable();
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     public void txtMembershipIdOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.MEMBERSHIPID, txtMembershipId); }

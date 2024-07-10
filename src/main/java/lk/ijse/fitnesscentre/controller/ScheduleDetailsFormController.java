@@ -1,5 +1,6 @@
 package lk.ijse.fitnesscentre.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -45,6 +47,11 @@ public class ScheduleDetailsFormController {
     public TableColumn colScheduleName;
     public TableColumn colMemberName;
 
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+
     private List<ScheduleDetailsDTO> scheduleDetailsList = new ArrayList<>();
 
     //Objects
@@ -59,6 +66,7 @@ public class ScheduleDetailsFormController {
         loadScheduleDetailsTable();
         loadScheduleId();
         loadMemberId();
+        hoverText();
     }
 
     @FXML
@@ -239,5 +247,12 @@ public class ScheduleDetailsFormController {
             throw new RuntimeException(e);
         }
         return scheduleDetails;
+    }
+
+    public void hoverText() {
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 }

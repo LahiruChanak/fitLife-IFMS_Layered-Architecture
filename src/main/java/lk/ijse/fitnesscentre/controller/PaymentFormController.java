@@ -86,6 +86,10 @@ public class PaymentFormController {
     @FXML
     private JFXComboBox<String> cmbMemberId;
 
+    public JFXButton btnAdd;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
+
     private List<PaymentDTO> paymentList = new ArrayList<>();
 
     //Objects
@@ -93,6 +97,18 @@ public class PaymentFormController {
     MembershipBO membershipBO = (MembershipBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBERSHIP);
     MemberBO memberBO = (MemberBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.MEMBER);
 
+
+    public void initialize() throws SQLException {
+        loadNextId();
+        this.paymentList = getAllPayments();
+        setCellValueFactory();
+        loadPaymentTypes();
+        loadMembershipIds();
+        loadMemberId();
+        loadPaymentTable();
+        setAttendDateTime();
+        hoverText();
+    }
 
     //Button Actions
 
@@ -333,15 +349,10 @@ public class PaymentFormController {
         return "PAY001";
     }
 
-    public void initialize() throws SQLException {
-        loadNextId();
-        this.paymentList = getAllPayments();
-        setCellValueFactory();
-        loadPaymentTypes();
-        loadMembershipIds();
-        loadMemberId();
-        loadPaymentTable();
-        setAttendDateTime();
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     public void txtPaymentIdOnKeyReleased(KeyEvent keyEvent) { Regex.setTextColor(TextField.PAYMENTID, txtPaymentId); }

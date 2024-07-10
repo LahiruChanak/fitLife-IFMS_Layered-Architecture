@@ -45,16 +45,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="90.0" layoutY="285.0" onAction="#txtPWOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXPasswordField>
       <JFXTextField fx:id="txtUsername" labelFloat="true" layoutX="90.0" layoutY="195.0" onAction="#txtUsernameOnAction" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="40.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="90.0" layoutY="285.0" onAction="#txtPWOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
       <Text fx:id="txtGreeting" fill="WHITE" layoutX="150.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font name="Georgia" size="28.0" />

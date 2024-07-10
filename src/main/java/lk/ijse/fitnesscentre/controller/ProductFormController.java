@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -77,6 +78,12 @@ public class ProductFormController {
     @FXML
     private TableColumn colAddedTime;
 
+    public JFXButton btnAdd;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnClear;
+    public JFXButton btnSearch;
+
     @FXML
     private TableView<ProductTm> tblProduct;
 
@@ -91,6 +98,7 @@ public class ProductFormController {
         loadProductTable();
         setCellValueFactory();
         setAttendDateTime();
+        hoverText();
 
         txtAddedDate.setEditable(false);
         txtAddedTime.setEditable(false);
@@ -318,6 +326,14 @@ public class ProductFormController {
                 new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+
+    public void hoverText(){
+        btnAdd.setTooltip(new Tooltip("Add"));
+        btnUpdate.setTooltip(new Tooltip("Update"));
+        btnDelete.setTooltip(new Tooltip("Delete"));
+        btnSearch.setTooltip(new Tooltip("Search"));
+        btnClear.setTooltip(new Tooltip("Clear"));
     }
 
     public void txtPrdNameSearchOnAction(ActionEvent actionEvent) { txtUnitPrice.requestFocus(); }
