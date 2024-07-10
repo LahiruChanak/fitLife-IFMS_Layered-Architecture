@@ -6,6 +6,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.Random;
 
 public class GMailer {
 
@@ -84,13 +85,13 @@ public class GMailer {
 //                + "Use this OTP to gain Access ."
 //                + "</div>";
 
-    private static final String senderEmail = "fitlifeifms@gmail.com";
-    private static final String password = "flpe urli iofh ecja";
+//    private static final String senderEmail = "fitlifeifms@gmail.com";
+//    private static final String password = "flpe urli iofh ecja";
 
     public static boolean sendEmail(String recipientEmail) {
-//        // Sender's email and password
-//        final String senderEmail = "edusync58@gmail.com";
-//        final String password = "poae fzac goul zgvs";
+        // Sender's email and password
+        final String senderEmail = "fitlifeifms@gmail.com";
+        final String password = "flpe urli iofh ecja";
 
         // Setup mail server properties
         Properties properties = new Properties();
@@ -122,7 +123,7 @@ public class GMailer {
             message.setSubject("OTP Verification");
 
             // Set email content
-            message.setText("Your OTP code is: " + generateOTP());
+            message.setText("Your OTP Code is : " + generateRandomNumber());
 
             // Send the message
             Transport.send(message);
@@ -136,10 +137,8 @@ public class GMailer {
         }
     }
 
-    public static String generateOTP() {
-        // Generate a 5-digit OTP
-        int otp = (int) ((Math.random() * 90000) + 10000);
-        return String.valueOf(otp);
+    public static String generateRandomNumber() {
+        return String.valueOf(new Random().nextInt(90000) + 10000);
     }
 
 }

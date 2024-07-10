@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-import static lk.ijse.fitnesscentre.util.GMailer.generateOTP;
+import static lk.ijse.fitnesscentre.util.GMailer.generateRandomNumber;
 
 public class CredentialFormController {
 
@@ -22,7 +22,7 @@ public class CredentialFormController {
     }
 
     public static boolean correctOTP(String otp) {
-        return otp.equals(generateOTP());
+        return otp.equals(generateRandomNumber());
     }
 }
 

@@ -5,30 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec37a68-b6e9-4736-80bd-5437541ae5a1" name="Changes" comment="final project">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7709de7a-f742-4228-ab38-599a01550138.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7709de7a-f742-4228-ab38-599a01550138.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/AttendanceFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CredentialFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/CredentialFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ForgotPWPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ForgotPWPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MemberFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/MembershipFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/PaymentFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ProductFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/RegisterPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/RegisterPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleDetailsFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/ScheduleFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerDetailsFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/controller/TrainerFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/attendance_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/forgotPWPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/forgotPWPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/member_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/member_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/membership_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/membership_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/paid_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/paid_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/payment_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/payment_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registerPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registerPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/scheduleDetails_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/scheduleDetails_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/schedule_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/schedule_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/store_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/trainerDetails_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/trainerDetails_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/trainer_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/trainer_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/util/GMailer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/fitnesscentre/util/GMailer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/client_secrets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/client_secret.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,49 +68,49 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.DashboardFormController.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DbConnection.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GMailer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OtpService.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GDSE70/MA_ENTERPRICES&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/Lenovo/IdeaProjects/fitnessCentre/src/main/java/lk/ijse/fitnessCentre/controller/LoginPaneController.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.DashboardFormController.executor": "Run",
+    "Application.DbConnection.executor": "Run",
+    "Application.GMailer.executor": "Run",
+    "Application.LauncherWrapper.executor": "Run",
+    "Application.OtpService.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/fitLife-IFMS_Layered-Architecture/src/main/resources",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "two.files.diff.last.used.file": "C:/Users/Lenovo/IdeaProjects/fitnessCentre/src/main/java/lk/ijse/fitnessCentre/controller/LoginPaneController.java",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="lk.ijse.fitnessCentre.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\IdeaProjects\fitLife-IFMS_Layered-Architecture\src\main\resources" />
       <recent name="C:\Users\Lenovo\IdeaProjects\fitLife-IFMS_Layered-Architecture\src\main\resources\view" />
       <recent name="C:\Users\Lenovo\IdeaProjects\fitLife-IFMS_Layered-Architecture" />
       <recent name="C:\Users\Lenovo\IdeaProjects\fitLife-IFMS_Layered-Architecture\src\main\java\lk\ijse\fitnesscentre\bo" />
       <recent name="C:\Users\Lenovo\IdeaProjects\fitnessCentre\src\main\resources\asserts\icon" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\fitnessCentre\src\main\resources\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\IdeaProjects\fitnessCentre\src\main\resources" />
@@ -145,7 +129,20 @@
       <recent name="lk.ijse.fitnessCentre.util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.LauncherWrapper">
+    <configuration name="GMailer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lk.ijse.fitnesscentre.util.GMailer" />
+      <module name="fitLife-IFMS_Layered-Architecture" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.ijse.fitnesscentre.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LauncherWrapper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -164,6 +161,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LauncherWrapper" />
+        <item itemvalue="Application.GMailer" />
       </list>
     </recent_temporary>
   </component>
@@ -303,15 +301,7 @@
       <workItem from="1720493191524" duration="1165000" />
       <workItem from="1720494616410" duration="5839000" />
       <workItem from="1720535429743" duration="5819000" />
-      <workItem from="1720590341609" duration="4273000" />
-    </task>
-    <task id="LOCAL-00065" summary="final project">
-      <option name="closed" value="true" />
-      <created>1714835716456</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1714835716456</updated>
+      <workItem from="1720590341609" duration="10795000" />
     </task>
     <task id="LOCAL-00066" summary="final project">
       <option name="closed" value="true" />
@@ -697,7 +687,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720539843166</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="final project">
+      <option name="closed" value="true" />
+      <created>1720594827608</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1720594827608</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

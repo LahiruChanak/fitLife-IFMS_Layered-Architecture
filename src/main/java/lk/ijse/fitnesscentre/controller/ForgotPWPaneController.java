@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.ijse.fitnesscentre.bo.BOFactory;
 import lk.ijse.fitnesscentre.bo.custom.CredentialBO;
+import lk.ijse.fitnesscentre.util.GMailer;
 import lk.ijse.fitnesscentre.util.Regex;
 import lk.ijse.fitnesscentre.util.TextField;
 
@@ -76,6 +77,12 @@ public class ForgotPWPaneController {
         transition.setFromX(load.getScene().getWidth());
         transition.setToX(0);
         transition.play();
+    }
+
+    private GMailer gMailer;
+
+    public ForgotPWPaneController() throws Exception {
+        gMailer = new GMailer(); // Initialize GMailer in the constructor
     }
 
     public void btnSendOnAction(ActionEvent actionEvent) throws Exception {
